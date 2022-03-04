@@ -114,19 +114,19 @@ CommandParser::setEmployeeForSearch(ParseInfo& parseInfo)
 {
     switch (parseInfo.searchType)
     {
-    case SelectType::EMPLOYEE_NUMBER:   parseInfo.employee.employeeNumber = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::NAME:              parseInfo.employee.name = transName(tokens[SEARCH_VALUE]); break;
-    case SelectType::FIRST_NAME:        parseInfo.employee.name.first = tokens[SEARCH_VALUE]; break;
-    case SelectType::LAST_NAME:         parseInfo.employee.name.last = tokens[SEARCH_VALUE]; break;
-    case SelectType::CAREER_LEVEL:      parseInfo.employee.careerLevel = transCareerLevel(tokens[SEARCH_VALUE]); break;
-    case SelectType::PHONE_NUMBER:      parseInfo.employee.phoneNumber = transPhoneNumber(tokens[SEARCH_VALUE]); break;
-    case SelectType::MID_PHONE_NUMBER:  parseInfo.employee.phoneNumber.mid = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::LAST_PHONE_NUMBER: parseInfo.employee.phoneNumber.last = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::BIRTHDAY:          parseInfo.employee.birthday = transBirthday(tokens[SEARCH_VALUE]); break;
-    case SelectType::YEAR_OF_BIRTHDAY:  parseInfo.employee.birthday.year = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::MONTH_OF_BIRTHDAY: parseInfo.employee.birthday.month = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::DAY_OF_BIRTHDAY:   parseInfo.employee.birthday.day = stoi(tokens[SEARCH_VALUE]); break;
-    case SelectType::CERTI_LEVEL:       parseInfo.employee.certiLevel = transCertiLevel(tokens[SEARCH_VALUE]); break;
+        case SelectType::EMPLOYEE_NUMBER:   parseInfo.employee.employeeNumber = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::NAME:              parseInfo.employee.name = transName(tokens[SEARCH_VALUE]); break;
+        case SelectType::FIRST_NAME:        parseInfo.employee.name.first = tokens[SEARCH_VALUE]; break;
+        case SelectType::LAST_NAME:         parseInfo.employee.name.last = tokens[SEARCH_VALUE]; break;
+        case SelectType::CAREER_LEVEL:      parseInfo.employee.careerLevel = transCareerLevel(tokens[SEARCH_VALUE]); break;
+        case SelectType::PHONE_NUMBER:      parseInfo.employee.phoneNumber = transPhoneNumber(tokens[SEARCH_VALUE]); break;
+        case SelectType::MID_PHONE_NUMBER:  parseInfo.employee.phoneNumber.mid = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::LAST_PHONE_NUMBER: parseInfo.employee.phoneNumber.last = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::BIRTHDAY:          parseInfo.employee.birthday = transBirthday(tokens[SEARCH_VALUE]); break;
+        case SelectType::YEAR_OF_BIRTHDAY:  parseInfo.employee.birthday.year = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::MONTH_OF_BIRTHDAY: parseInfo.employee.birthday.month = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::DAY_OF_BIRTHDAY:   parseInfo.employee.birthday.day = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::CERTI_LEVEL:       parseInfo.employee.certiLevel = transCertiLevel(tokens[SEARCH_VALUE]); break;
     }
 
     return;
@@ -217,12 +217,12 @@ CommandParser::setModifyEmployee(ParseInfo& parseInfo)
 
     switch (parseInfo.modifyType)
     {
-    case SelectType::EMPLOYEE_NUMBER:   parseInfo.modifyEmployee.employeeNumber = stoi(tokens[MODIFY_VALUE]); break;
-    case SelectType::NAME:              parseInfo.modifyEmployee.name = transName(tokens[MODIFY_VALUE]); break;
-    case SelectType::CAREER_LEVEL:      parseInfo.modifyEmployee.careerLevel = transCareerLevel(tokens[MODIFY_VALUE]); break;
-    case SelectType::PHONE_NUMBER:      parseInfo.modifyEmployee.phoneNumber = transPhoneNumber(tokens[MODIFY_VALUE]); break;
-    case SelectType::BIRTHDAY:          parseInfo.modifyEmployee.birthday = transBirthday(tokens[MODIFY_VALUE]); break;
-    case SelectType::CERTI_LEVEL:       parseInfo.modifyEmployee.certiLevel = transCertiLevel(tokens[MODIFY_VALUE]); break;
+        case SelectType::EMPLOYEE_NUMBER:   parseInfo.modifyEmployee.employeeNumber = stoi(tokens[MODIFY_VALUE]); break;
+        case SelectType::NAME:              parseInfo.modifyEmployee.name = transName(tokens[MODIFY_VALUE]); break;
+        case SelectType::CAREER_LEVEL:      parseInfo.modifyEmployee.careerLevel = transCareerLevel(tokens[MODIFY_VALUE]); break;
+        case SelectType::PHONE_NUMBER:      parseInfo.modifyEmployee.phoneNumber = transPhoneNumber(tokens[MODIFY_VALUE]); break;
+        case SelectType::BIRTHDAY:          parseInfo.modifyEmployee.birthday = transBirthday(tokens[MODIFY_VALUE]); break;
+        case SelectType::CERTI_LEVEL:       parseInfo.modifyEmployee.certiLevel = transCertiLevel(tokens[MODIFY_VALUE]); break;
     }
 
     return;
