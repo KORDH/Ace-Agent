@@ -62,11 +62,7 @@ CommandParser::setSearchType(ParseInfo& parseInfo)
 {
     SelectType searchType = SelectType::INVALID;
 
-    if (tokens[COMMAND] == "ADD")
-    {
-        searchType = SelectType::INVALID;
-    }
-    else
+    if (tokens[COMMAND] != "ADD")
     {
         if (tokens[SEARCH_CATEGORY] == "employeeNum") searchType = SelectType::EMPLOYEE_NUMBER;
         else if (tokens[SEARCH_CATEGORY] == "name" && tokens[SEARCH_OPTION] == "-f")   searchType = SelectType::FIRST_NAME;
