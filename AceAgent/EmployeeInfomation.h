@@ -9,13 +9,15 @@ enum class CareerLevel
 	CL2,
 	CL3,
 	CL4,
+	NONE,
 };
 
 enum class CertiLevel
 {
 	ADV,
 	PRO,
-	EX
+	EX,
+	NONE
 };
 
 class Birthday
@@ -24,6 +26,18 @@ public:
 	Birthday(unsigned int year, unsigned int month, unsigned int day)
 		: year_{ year }, month_{ month }, day_{ day }
 	{}
+	unsigned int getYear()
+	{
+		return year_;
+	}
+	unsigned int getMonth()
+	{
+		return month_;
+	}unsigned int getDay()
+	{
+		return day_;
+	}
+
 private:
 	unsigned int year_;
 	unsigned int month_;
@@ -48,6 +62,38 @@ public:
 	{
 	}
 
+	unsigned int getEmployeeNumber()
+	{
+		return employeeNumber_;
+	}
+	string getFirstName()
+	{
+		return firstName_;
+	}
+	string getLastName()
+	{
+		return lastName_;
+	}
+	CareerLevel getCareerLevel()
+	{
+		return careerLevel_;
+	}
+	unsigned int getMidPhoneNumber()
+	{
+		return midPhoneNumber_;
+	}
+	unsigned int getLastPhoneNumber()
+	{
+		return lastPhoneNumber_;
+	}
+	Birthday getBirthday()
+	{
+		return birthday_;
+	}
+	CertiLevel getCertiLevel()
+	{
+		return certiLevel_;
+	}
 private:
 	unsigned int employeeNumber_;
 	string firstName_;

@@ -4,6 +4,7 @@ using namespace std;
 
 class ProcessResult
 {
-	string PrintRecord[5];
-	unsigned int numOfRecord;
+public:
+	string printRecord[5];
+	unsigned int numOfRecord = 0;
 };

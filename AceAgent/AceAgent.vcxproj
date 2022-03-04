@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EmployeeInfomation.h" />
+    <ClInclude Include="IDataManager.h" />
     <ClInclude Include="ProcessResult.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="SelectType.h" />
