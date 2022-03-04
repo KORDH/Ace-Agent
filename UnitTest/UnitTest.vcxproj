@@ -38,7 +38,7 @@
     <ClInclude Include="TestUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MockAddCommandProcessor.h" />
+    <ClCompile Include="MockDataManager.h" />
     <ClCompile Include="Processor_unittest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
