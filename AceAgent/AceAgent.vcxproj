@@ -139,9 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="EmployeeInformation.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SearchManager.cpp" />
     <ClCompile Include="Processor.cpp" />
+    <ClCompile Include="CommandParser.cpp" />
+    <ClCompile Include="ParseInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
@@ -157,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="CommandParser.h" />
+    <ClInclude Include="ParseInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
