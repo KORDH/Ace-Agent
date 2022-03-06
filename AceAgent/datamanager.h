@@ -1,34 +1,31 @@
 #pragma once
+
 #include <map>
-#include <vector>
 #include "Type.h"
 
 class DataManager
 {
 public:
-    map<unsigned int, EmployeeInformation>* getMap() { return &dataMap; }
-
-    void addEmployee(EmployeeInformation employeeInfo);
-    ProcessResult* delEmployee(bool isDetailPrint, SearchBy searchBy, EmployeeInformation employeeInfo);
-    ProcessResult* schEmployee(bool isDetailPrint, SearchBy searchBy, EmployeeInformation employeeInfo);
-    ProcessResult* modEmployee(bool isDetailPrint, SearchBy searchBy, EmployeeInformation employeeInfo, ModOption modOption, EmployeeInformation modEmployeeInfo);
-
-    vector<string> makeRecord(bool isDetailPrint, int searchCnt, CmdType cmdType, vector<EmployeeInformation> employeeInfoList);
+    multimap<unsigned int, EmployeeInformation>& getEmployeeNumberMap() { return employeeNumberMap; }
+    multimap<unsigned int, EmployeeInformation>& getCareerLevelMap() { return careerLevelMap; }
+    multimap<unsigned int, EmployeeInformation>& getYearOfBirthdayMap() { return yearOfBirthdayMap; }
+    multimap<unsigned int, EmployeeInformation>& getMonthOfBirthdayMap() { return monthOfBirthdayMap; }
+    multimap<unsigned int, EmployeeInformation>& getDayOfBirthdayMap() { return dayOfBirthdayMap; }
+    multimap<unsigned int, EmployeeInformation>& getCertiLevelMap() { return certiLevelMap; }
+    multimap<string, EmployeeInformation>& getFirstNameMap() { return firstNameMap; }
+    multimap<string, EmployeeInformation>& getLastNameMap() { return lastNameMap; }
+    multimap<string, EmployeeInformation>& getMidPhoneNumberMap() { return midPhoneNumberMap; }
+    multimap<string, EmployeeInformation>& getLastPhoneNumberMap() { return lastPhoneNumberMap; }
 
 private:
-    map<unsigned int, EmployeeInformation> dataMap;
-
-    multimap<string, unsigned int> firstNameMap;
-    multimap<string, unsigned int> lastNameMap;
-
-    multimap<CareerLevel, unsigned int> clMap;
-
-    multimap<unsigned int, unsigned int> midPhoneNumMap;
-    multimap<unsigned int, unsigned int> lastPhoneNumMap;
-    
-    multimap<unsigned int, unsigned int> yearofBirthdayMap;
-    multimap<unsigned int, unsigned int> monthofBirthdayMap;
-    multimap<unsigned int, unsigned int> dayofBirthdayMap;
-
-    multimap<CertiLevel, unsigned int> certiLevelMap;
+    multimap<unsigned int, EmployeeInformation> employeeNumberMap;
+    multimap<unsigned int, EmployeeInformation> careerLevelMap;
+    multimap<unsigned int, EmployeeInformation> yearOfBirthdayMap;
+    multimap<unsigned int, EmployeeInformation> monthOfBirthdayMap;
+    multimap<unsigned int, EmployeeInformation> dayOfBirthdayMap;
+    multimap<unsigned int, EmployeeInformation> certiLevelMap;
+    multimap<string, EmployeeInformation> firstNameMap;
+    multimap<string, EmployeeInformation> lastNameMap;
+    multimap<string, EmployeeInformation> midPhoneNumberMap;
+    multimap<string, EmployeeInformation> lastPhoneNumberMap;
 };

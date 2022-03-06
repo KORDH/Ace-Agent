@@ -139,8 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="datamanager.cpp" />
+    <ClCompile Include="operator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RecordMaker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
@@ -148,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="datamanager.h" />
+    <ClInclude Include="operator.h" />
+    <ClInclude Include="RecordMaker.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
