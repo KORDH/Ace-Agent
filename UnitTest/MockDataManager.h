@@ -39,7 +39,7 @@ public:
 	}
 
 	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)
-	{
+	{		
 		unsigned int employeeNumber = deleteInfomation.getEmployeeNumber();
 		string fullName = deleteInfomation.getFirstName() + " " + deleteInfomation.getLastName();
 		unsigned int fullPhone = (deleteInfomation.getMidPhoneNumber() * 10000) + deleteInfomation.getLastPhoneNumber();
