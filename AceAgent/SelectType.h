@@ -1,4 +1,17 @@
 #pragma once
+
+const unsigned int EMPLOYEE_NUM_BOUND = 22000000;
+const unsigned int EMPLOYEE_NUM_CORRECTION = 100000000;
+
+enum class Command
+{
+	INVALID,
+	ADD,
+	DEL,
+	SCH,
+	MOD,
+};
+
 enum class SelectType
 {
 	EMPLOYEE_NUMBER,

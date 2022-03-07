@@ -2,15 +2,6 @@
 #include "EmployeeInformation.h"
 #include "SelectType.h"
 
-enum class Command
-{
-    INVALID,
-    ADD,
-    DEL,
-    SCH,
-    MOD,
-};
-
 class ParseInfo
 {
 public:
