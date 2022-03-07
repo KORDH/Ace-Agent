@@ -481,7 +481,7 @@ TEST(SearchTest, SearchTestForCertiLevel) {
 TEST(SearchTest, SearchTestForMaxCount) {
 	SearchManager searchManager;
 	vector<EmployeeInformation> result;
-	int ResultData = 5;
+	int ResultData = MAX_SEARCH_CNT;
 	int cnt = 0;
 	EmployeeInformation employee1{ 1018028552, "Donghyuk", "Jang", CareerLevel::CL2, 1212, 7949 , 1992,12,26, CertiLevel::EX };
 	EmployeeInformation employee2{ 70222322, "Donghyuk", "Jang", CareerLevel::CL2, 1212, 7949 , 1992,12,26, CertiLevel::EX };
@@ -494,7 +494,7 @@ TEST(SearchTest, SearchTestForMaxCount) {
 
 	EmployeeInformation searchEmployeeInfo{ 1018028552, "Donghyuk", "Jang", CareerLevel::CL2, 5487, 7949 , 1992,12,26, CertiLevel::PRO };
 
-	FEATURE("SearchTestForMaxCount은 동일한 Information을 가진 employee를 5개 까지만 찾을 수 있다.");
+	FEATURE("SearchTestForMaxCount은 동일한 Information을 가진 employee를 5개 까지 찾을 수 있다.");
 	SCENARIO("Database에 저장된 동일한 information을 가진 employee들을 반환한다.");
 
 	GIVEN("검색할 Data type가 주어진다.");
