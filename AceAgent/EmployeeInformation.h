@@ -20,12 +20,26 @@ enum class CertiLevel
 	NONE
 };
 
+struct Name
+{
+	string first;
+	string last;
+};
+
+struct PhoneNumber
+{
+	unsigned int mid;
+	unsigned int last;
+};
+
 class Birthday
 {
 public:
+	Birthday() : year_{ 0 }, month_{ 0 }, day_{ 0 } {}
 	Birthday(unsigned int year, unsigned int month, unsigned int day)
 		: year_{ year }, month_{ month }, day_{ day }
 	{}
+
 	unsigned int getYear()
 	{
 		return year_;
@@ -38,25 +52,23 @@ public:
 		return day_;
 	}
 
-private:
+public:
 	unsigned int year_;
 	unsigned int month_;
 	unsigned int day_;
 };
 
-class EmployeeInfomation
+class EmployeeInformation
 {
 
 public:
-	EmployeeInfomation(unsigned int employeeNumber, string firstName, string lastName,
+	EmployeeInformation(unsigned int employeeNumber, string firstName, string lastName,
 		CareerLevel careerLevel, unsigned int midPhoneNumber, unsigned int lastPhoneNumber,
 		unsigned int  yearOfBirthday, unsigned int  monthOfBirthday, unsigned int  dayOfBirthday, CertiLevel certiLevel) :
 		employeeNumber_{ employeeNumber },
-		firstName_{ firstName },
-		lastName_{ lastName },
+		name_{ firstName,lastName },
 		careerLevel_{ careerLevel },
-		midPhoneNumber_{ midPhoneNumber },
-		lastPhoneNumber_{ lastPhoneNumber },
+		phoneNumber_{ midPhoneNumber, lastPhoneNumber },
 		birthday_(yearOfBirthday, monthOfBirthday, dayOfBirthday),
 		certiLevel_{ certiLevel }
 	{
@@ -68,11 +80,11 @@ public:
 	}
 	string getFirstName()
 	{
-		return firstName_;
+		return name_.first;
 	}
 	string getLastName()
 	{
-		return lastName_;
+		return name_.last;
 	}
 	CareerLevel getCareerLevel()
 	{
@@ -80,11 +92,11 @@ public:
 	}
 	unsigned int getMidPhoneNumber()
 	{
-		return midPhoneNumber_;
+		return phoneNumber_.mid;
 	}
 	unsigned int getLastPhoneNumber()
 	{
-		return lastPhoneNumber_;
+		return phoneNumber_.last;
 	}
 	Birthday getBirthday()
 	{
@@ -94,13 +106,11 @@ public:
 	{
 		return certiLevel_;
 	}
-private:
+public:
 	unsigned int employeeNumber_;
-	string firstName_;
-	string lastName_;
+	Name name_;
 	CareerLevel careerLevel_;
-	unsigned int midPhoneNumber_;
-	unsigned int lastPhoneNumber_;
+	PhoneNumber phoneNumber_;
 	Birthday birthday_;
 	CertiLevel certiLevel_;
 };

@@ -3,20 +3,20 @@
 #include "TestUtil.h"
 
 void addDataForTest(EmployeeInformation employeeInfo) {
-	employeeNumberMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.employeeNumber, employeeInfo));
+	employeeNumberMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.employeeNumber_, employeeInfo));
 	yearOfBirthdayMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.yearOfBirthday, employeeInfo));
 	monthOfBirthdayMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.monthOfBirthday, employeeInfo));
 	dayOfBirthdayMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.dayOfBirthday, employeeInfo));
-	careerLevelMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.careerLevel, employeeInfo));
+	careerLevelMap.insert(pair<unsigned int, EmployeeInformation>(employeeInfo.careerLevel_, employeeInfo));
 	
-	certiLevelMap.insert(pair<string, EmployeeInformation>(employeeInfo.certiLevel, employeeInfo));
+	certiLevelMap.insert(pair<string, EmployeeInformation>(employeeInfo.certiLevel_, employeeInfo));
 	fullNameMap.insert(pair<string, EmployeeInformation>(employeeInfo.fullName, employeeInfo));
 	firstNameMap.insert(pair<string, EmployeeInformation>(employeeInfo.firstName, employeeInfo));
 	lastNameMap.insert(pair<string, EmployeeInformation>(employeeInfo.lastName, employeeInfo));
-	phoneNumberMap.insert(pair<string, EmployeeInformation>(employeeInfo.phoneNumber, employeeInfo));
+	phoneNumberMap.insert(pair<string, EmployeeInformation>(employeeInfo.phoneNumber_, employeeInfo));
 	midPhoneNumberMap.insert(pair<string, EmployeeInformation>(employeeInfo.midPhoneNumber, employeeInfo));
 	lastPhoneNumberMap.insert(pair<string, EmployeeInformation>(employeeInfo.lastPhoneNumber, employeeInfo));
-	birthdayMap.insert(pair<string, EmployeeInformation>(employeeInfo.birthday, employeeInfo));
+	birthdayMap.insert(pair<string, EmployeeInformation>(employeeInfo.birthday_, employeeInfo));
 }
 
 TEST(SearchTest, SearchTestForName) {
@@ -45,7 +45,7 @@ TEST(SearchTest, SearchTestForName) {
 	AND("동일한 Full name을 가진 vector가 나와야한다.");
 
 	for (const auto& i : result)
-		EXPECT_EQ(i.employeeNumber, cmpresultdata[cnt++]);
+		EXPECT_EQ(i.employeeNumber_, cmpresultdata[cnt++]);
 
 	cnt = 0;
 
@@ -54,7 +54,7 @@ TEST(SearchTest, SearchTestForName) {
 	result = searchManager.SearchEmployeeData(DataType::FIRST_NAME, "Donghyuk");
 
 	for (const auto& i : result) 
-		EXPECT_EQ(i.employeeNumber, cmpresultdata[cnt++]);
+		EXPECT_EQ(i.employeeNumber_, cmpresultdata[cnt++]);
 
 	
 	AND("동일한 Last name을 가진 vector가 나와야한다.");
@@ -64,7 +64,7 @@ TEST(SearchTest, SearchTestForName) {
 	result = searchManager.SearchEmployeeData(DataType::LAST_NAME, "Jang");
 
 	for (const auto& i : result) 
-		EXPECT_EQ(i.employeeNumber, cmpresultdata[cnt++]);
+		EXPECT_EQ(i.employeeNumber_, cmpresultdata[cnt++]);
 
 }
 

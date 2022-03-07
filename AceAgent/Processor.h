@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EmployeeInfomation.h"
+#include "EmployeeInformation.h"
 #include "ProcessResult.h"
 #include "SelectType.h"
 #include "IDataManager.h"
@@ -9,7 +9,7 @@
 
 class CommandProcessor {
 public:
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) = 0;
+	virtual void runCommand(EmployeeInformation& employeeInfomation) = 0;
 };
 
 class AddCommandProcessor : public CommandProcessor {
@@ -17,7 +17,7 @@ public:
 	AddCommandProcessor(IDataManager& processor);
 	~AddCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		processor_.addEmployee(employeeInfomation);
 	}
 protected:
@@ -31,7 +31,7 @@ public:
 	DeleteCommandProcessor(IDataManager& processor);
 	~DeleteCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInfomation));
 	}
 
