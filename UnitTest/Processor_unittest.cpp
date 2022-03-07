@@ -18,7 +18,6 @@ TEST_F(FixtureCommandProcessor, SuccessToAdd) {
 
 	WHEN("employee를 add 했을 때");
 	THEN("모든 정보를 1번만 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, addEmployee(_)).Times(1);
 
 	addCommandProcessor.runCommand(employeeInfomation);
 

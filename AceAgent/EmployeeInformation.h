@@ -117,7 +117,6 @@ public:
 	{
 		return certiLevel_;
 	}
-
 	void setFirstName(string firstName)
 	{
 		name_.first = firstName;
