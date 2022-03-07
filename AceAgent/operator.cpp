@@ -34,13 +34,13 @@ Operator::addEmployee(EmployeeInformation employeeInfo)
 }
 
 ProcessResult*
-Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInformation employeeInfo)
+Operator::delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
     vector<EmployeeInformation> list;
     
-    if (SelectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
+    if (selectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
@@ -67,13 +67,13 @@ Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
 }
 
 ProcessResult*
-Operator::schEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInformation employeeInfo)
+Operator::schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
     vector<EmployeeInformation> list;
 
-    if (SelectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
+    if (selectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
