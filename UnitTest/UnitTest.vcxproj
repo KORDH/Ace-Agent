@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Operator_Test.cpp" />
+    <ClCompile Include="Handler_UnitTest.cpp" />
     <ClCompile Include="SearchTest.cpp" />
     <ClCompile Include="MockDataManager.h" />
     <ClCompile Include="Processor_unittest.cpp" />
