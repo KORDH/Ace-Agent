@@ -14,7 +14,7 @@ public:
     Operator()
     {
         pDataManager = new DataManager;
-        pSearchManager = new DataManager;
+        pSearchManager = new SearchManager;
         pRecordMaker = new RecordMaker;
     }
 
