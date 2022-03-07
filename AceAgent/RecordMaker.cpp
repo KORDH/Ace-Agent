@@ -46,6 +46,8 @@ RecordMaker::makeRecord(bool isDetailPrint, Command cmdType, vector<EmployeeInfo
                 certiLevelName[(int)(it.certiLevel_)];
 
             result.push_back(record);
+
+            if (result.size() >= MAX_PRINT_DATA_COUNT) break;
         }
     }
     else

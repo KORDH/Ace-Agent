@@ -8,8 +8,6 @@
 #include "EmployeeInformation.h"
 #include "datamanager.h"
 
-#define MAX_SEARCH_CNT	5
-
 using namespace std;
 
 class SearchManager {
@@ -23,9 +21,6 @@ public:
 		{
 			if (iter.second.employeeNumber_ == employeeInformation.employeeNumber_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -38,9 +33,6 @@ public:
 		{
 			if (iter.second.name_.first == employeeInformation.name_.first && iter.second.name_.last == employeeInformation.name_.last) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -53,9 +45,6 @@ public:
 		{
 			if (iter.second.name_.first == employeeInformation.name_.first) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -68,9 +57,6 @@ public:
 		{
 			if (iter.second.name_.last == employeeInformation.name_.last) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -85,9 +71,6 @@ public:
 				&& iter.second.birthday_.month_ == employeeInformation.birthday_.month_
 				&& iter.second.birthday_.day_ == employeeInformation.birthday_.day_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -100,9 +83,6 @@ public:
 		{
 			if (iter.second.birthday_.year_ == employeeInformation.birthday_.year_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -115,9 +95,6 @@ public:
 		{
 			if (iter.second.birthday_.month_ == employeeInformation.birthday_.month_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -130,9 +107,6 @@ public:
 		{
 			if (iter.second.birthday_.day_ == employeeInformation.birthday_.day_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -146,9 +120,6 @@ public:
 			if (iter.second.phoneNumber_.last == employeeInformation.phoneNumber_.last
 				&& iter.second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -161,9 +132,6 @@ public:
 		{
 			if (iter.second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -176,9 +144,6 @@ public:
 		{
 			if (iter.second.phoneNumber_.last == employeeInformation.phoneNumber_.last) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -192,9 +157,6 @@ public:
 		{
 			if (iter.second.careerLevel_ == employeeInformation.careerLevel_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
@@ -207,9 +169,6 @@ public:
 		{
 			if (iter.second.certiLevel_ == employeeInformation.certiLevel_) {
 				result.push_back(iter.second);
-
-				if (result.size() >= MAX_SEARCH_CNT)
-					break;
 			}
 		}
 		return result;
