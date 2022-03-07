@@ -62,7 +62,7 @@ void SearchCommandProcessor::setProcessResult(ProcessResult* processResult)
 }
 
 ModifyCommandProcessor::ModifyCommandProcessor(IDataManager& processor)
-	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }, modifyInfomation_{ nullptr }
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }, modifyInformation_{ nullptr }
 {
 }
 
@@ -70,12 +70,12 @@ ModifyCommandProcessor::~ModifyCommandProcessor()
 {
 }
 
-void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInformation* modifyInfomation)
+void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInformation* modifyInformation)
 {
 	isDetailPrint_ = isDetailPrint;
 	searchType_ = searchType;
 	modifyType_ = modfiyType;
-	modifyInfomation_ = modifyInfomation;
+	modifyInformation_ = modifyInformation;
 }
 
 ProcessResult* ModifyCommandProcessor::getProcessResult()

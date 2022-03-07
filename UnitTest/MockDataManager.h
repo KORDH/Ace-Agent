@@ -38,39 +38,39 @@ public:
 		fakeDataManagerCertiLevel_[EmployeeInformation.getCertiLevel()].push_back(employeeNumber);;
 	}
 
-	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)
+	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)
 	{
-		unsigned int employeeNumber = deleteInfomation.getEmployeeNumber();
-		string fullName = deleteInfomation.getFirstName() + " " + deleteInfomation.getLastName();
-		unsigned int fullPhone = (deleteInfomation.getMidPhoneNumber() * 10000) + deleteInfomation.getLastPhoneNumber();
-		unsigned int fullBrithday = (deleteInfomation.getBirthday().getYear() * 10000) + (deleteInfomation.getBirthday().getMonth() * 100) + (deleteInfomation.getBirthday().getYear() * 1);
+		unsigned int employeeNumber = deleteInformation.getEmployeeNumber();
+		string fullName = deleteInformation.getFirstName() + " " + deleteInformation.getLastName();
+		unsigned int fullPhone = (deleteInformation.getMidPhoneNumber() * 10000) + deleteInformation.getLastPhoneNumber();
+		unsigned int fullBrithday = (deleteInformation.getBirthday().getYear() * 10000) + (deleteInformation.getBirthday().getMonth() * 100) + (deleteInformation.getBirthday().getYear() * 1);
 
 		if (SelectType::EMPLOYEE_NUMBER == deleteType)
-			return deleteEmployeeByEmployeeNumber(deleteInfomation.getEmployeeNumber());
+			return deleteEmployeeByEmployeeNumber(deleteInformation.getEmployeeNumber());
 		else if (SelectType::FULL_NAME == deleteType)
 			return deleteEmployeeMap(fakeDataManagerFullName_, fullName);
 		else if (SelectType::FIRST_NAME == deleteType)
-			return deleteEmployeeMap(fakeDataManagerFristName_, deleteInfomation.getFirstName());
+			return deleteEmployeeMap(fakeDataManagerFristName_, deleteInformation.getFirstName());
 		else if (SelectType::LAST_NAME == deleteType)
-			return deleteEmployeeMap(fakeDataManagerLastName_, deleteInfomation.getLastName());
+			return deleteEmployeeMap(fakeDataManagerLastName_, deleteInformation.getLastName());
 		else if (SelectType::CAREER_LEVEL == deleteType)
-			return deleteEmployeeMap(fakeDataManagerCareerLevel_, deleteInfomation.getCareerLevel());
+			return deleteEmployeeMap(fakeDataManagerCareerLevel_, deleteInformation.getCareerLevel());
 		else if (SelectType::FULL_PHONE_NUMBER == deleteType)
 			return deleteEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone);
 		else if (SelectType::MID_PHONE_NUMBER == deleteType)
-			return deleteEmployeeMap(fakeDataManagerMidPhoneNumber_, deleteInfomation.getMidPhoneNumber());
+			return deleteEmployeeMap(fakeDataManagerMidPhoneNumber_, deleteInformation.getMidPhoneNumber());
 		else if (SelectType::LAST_PHONE_NUMBER == deleteType)
-			return deleteEmployeeMap(fakeDataManagerLastPhoneNumber_, deleteInfomation.getLastPhoneNumber());
+			return deleteEmployeeMap(fakeDataManagerLastPhoneNumber_, deleteInformation.getLastPhoneNumber());
 		else if (SelectType::FULL_BIRTHDAY == deleteType)
 			return deleteEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday);
 		else if (SelectType::YEAR_OF_BIRTHDAY == deleteType)
-			return deleteEmployeeMap(fakeDataManagerYearOfBirthday_, deleteInfomation.getBirthday().getYear());
+			return deleteEmployeeMap(fakeDataManagerYearOfBirthday_, deleteInformation.getBirthday().getYear());
 		else if (SelectType::MONTH_OF_BIRTHDAY == deleteType)
-			return deleteEmployeeMap(fakeDataManagerMonthOfBirthday_, deleteInfomation.getBirthday().getMonth());
+			return deleteEmployeeMap(fakeDataManagerMonthOfBirthday_, deleteInformation.getBirthday().getMonth());
 		else if (SelectType::DAY_OF_BIRTHDAY == deleteType)
-			return deleteEmployeeMap(fakeDataManagerDayOfBirthday_, deleteInfomation.getBirthday().getDay());
+			return deleteEmployeeMap(fakeDataManagerDayOfBirthday_, deleteInformation.getBirthday().getDay());
 		else if (SelectType::CERTI_LEVEL == deleteType)
-			return deleteEmployeeMap(fakeDataManagerCertiLevel_, deleteInfomation.getCertiLevel());
+			return deleteEmployeeMap(fakeDataManagerCertiLevel_, deleteInformation.getCertiLevel());
 	}
 
 	static bool employeeNumberCompare(const unsigned int& a, const unsigned int& b)
@@ -229,39 +229,39 @@ public:
 		return &processResult_;
 	}
 
-	virtual ProcessResult* searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation)
+	virtual ProcessResult* searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)
 	{
-		unsigned int employeeNumber = searchInfomation.getEmployeeNumber();
-		string fullName = searchInfomation.getFirstName() + " " + searchInfomation.getLastName();
-		unsigned int fullPhone = (searchInfomation.getMidPhoneNumber() * 10000) + searchInfomation.getLastPhoneNumber();
-		unsigned int fullBrithday = (searchInfomation.getBirthday().getYear() * 10000) + (searchInfomation.getBirthday().getMonth() * 100) + (searchInfomation.getBirthday().getYear() * 1);
+		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
+		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
+		unsigned int fullPhone = (searchInformation.getMidPhoneNumber() * 10000) + searchInformation.getLastPhoneNumber();
+		unsigned int fullBrithday = (searchInformation.getBirthday().getYear() * 10000) + (searchInformation.getBirthday().getMonth() * 100) + (searchInformation.getBirthday().getYear() * 1);
 
 		if (SelectType::EMPLOYEE_NUMBER == searchType)
-			return searchEmployeeByEmployeeNumber(searchInfomation.getEmployeeNumber());
+			return searchEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber());
 		else if (SelectType::FULL_NAME == searchType)
 			return searchEmployeeMap(fakeDataManagerFullName_, fullName);
 		else if (SelectType::FIRST_NAME == searchType)
-			return searchEmployeeMap(fakeDataManagerFristName_, searchInfomation.getFirstName());
+			return searchEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName());
 		else if (SelectType::LAST_NAME == searchType)
-			return searchEmployeeMap(fakeDataManagerLastName_, searchInfomation.getLastName());
+			return searchEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName());
 		else if (SelectType::CAREER_LEVEL == searchType)
-			return searchEmployeeMap(fakeDataManagerCareerLevel_, searchInfomation.getCareerLevel());
+			return searchEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel());
 		else if (SelectType::FULL_PHONE_NUMBER == searchType)
 			return searchEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone);
 		else if (SelectType::MID_PHONE_NUMBER == searchType)
-			return searchEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInfomation.getMidPhoneNumber());
+			return searchEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber());
 		else if (SelectType::LAST_PHONE_NUMBER == searchType)
-			return searchEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInfomation.getLastPhoneNumber());
+			return searchEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber());
 		else if (SelectType::FULL_BIRTHDAY == searchType)
 			return searchEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday);
 		else if (SelectType::YEAR_OF_BIRTHDAY == searchType)
-			return searchEmployeeMap(fakeDataManagerYearOfBirthday_, searchInfomation.getBirthday().getYear());
+			return searchEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear());
 		else if (SelectType::MONTH_OF_BIRTHDAY == searchType)
-			return searchEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInfomation.getBirthday().getMonth());
+			return searchEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth());
 		else if (SelectType::DAY_OF_BIRTHDAY == searchType)
-			return searchEmployeeMap(fakeDataManagerDayOfBirthday_, searchInfomation.getBirthday().getDay());
+			return searchEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay());
 		else if (SelectType::CERTI_LEVEL == searchType)
-			return searchEmployeeMap(fakeDataManagerCertiLevel_, searchInfomation.getCertiLevel());
+			return searchEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel());
 	}
 
 	ProcessResult* searchEmployeeByEmployeeNumber(int empplyeeNumber)
@@ -338,7 +338,7 @@ public:
 		return &processResult_;
 	}
 
-	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInfomation)
+	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -346,53 +346,53 @@ public:
 		unsigned int fullBrithday = (searchInformation.getBirthday().getYear() * 10000) + (searchInformation.getBirthday().getMonth() * 100) + (searchInformation.getBirthday().getYear() * 1);
 
 		if (SelectType::EMPLOYEE_NUMBER == searchType)
-			return modifyEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber(), modifyType, modifyInfomation);
+			return modifyEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber(), modifyType, modifyInformation);
 		else if (SelectType::FULL_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullName_, fullName, modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerFullName_, fullName, modifyType, modifyInformation);
 		else if (SelectType::FIRST_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, modifyInformation);
 		else if (SelectType::LAST_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, modifyInformation);
 		else if (SelectType::CAREER_LEVEL == searchType)
-			return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel(), modifyType, modifyInformation);
 		else if (SelectType::FULL_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone, modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone, modifyType, modifyInformation);
 		else if (SelectType::MID_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber(), modifyType, modifyInformation);
 		else if (SelectType::LAST_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber(), modifyType, modifyInformation);
 		else if (SelectType::FULL_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday, modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday, modifyType, modifyInformation);
 		else if (SelectType::YEAR_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear(), modifyType, modifyInformation);
 		else if (SelectType::MONTH_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth(), modifyType, modifyInformation);
 		else if (SelectType::DAY_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay(), modifyType, modifyInformation);
 		else if (SelectType::CERTI_LEVEL == searchType)
-			return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel(), modifyType, modifyInfomation);
+			return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel(), modifyType, modifyInformation);
 	}
 
-	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInformation* targetInfomation, EmployeeInformation* modifyInfomation)
+	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInformation* targetInformation, EmployeeInformation* modifyInformation)
 	{
 		if (SelectType::FIRST_NAME == modifyType)
-			targetInfomation->setFirstName(modifyInfomation->getFirstName());
+			targetInformation->setFirstName(modifyInformation->getFirstName());
 		else if (SelectType::LAST_NAME == modifyType)
-			targetInfomation->setLastName(modifyInfomation->getLastName());
+			targetInformation->setLastName(modifyInformation->getLastName());
 		else if (SelectType::CAREER_LEVEL == modifyType)
-			targetInfomation->setCareerLevel(modifyInfomation->getCareerLevel());
+			targetInformation->setCareerLevel(modifyInformation->getCareerLevel());
 		else if (SelectType::MID_PHONE_NUMBER == modifyType)
-			targetInfomation->setMidPhoneNumber(modifyInfomation->getMidPhoneNumber());
+			targetInformation->setMidPhoneNumber(modifyInformation->getMidPhoneNumber());
 		else if (SelectType::LAST_PHONE_NUMBER == modifyType)
-			targetInfomation->setLastPhoneNumber(modifyInfomation->getLastPhoneNumber());
+			targetInformation->setLastPhoneNumber(modifyInformation->getLastPhoneNumber());
 		else if (SelectType::YEAR_OF_BIRTHDAY == modifyType)
-			targetInfomation->setYearOfBirthday(modifyInfomation->getBirthday());
+			targetInformation->setYearOfBirthday(modifyInformation->getBirthday());
 		else if (SelectType::MONTH_OF_BIRTHDAY == modifyType)
-			targetInfomation->setMonthOfBirthday(modifyInfomation->getBirthday());
+			targetInformation->setMonthOfBirthday(modifyInformation->getBirthday());
 		else if (SelectType::DAY_OF_BIRTHDAY == modifyType)
-			targetInfomation->setDayOfBirthday(modifyInfomation->getBirthday());
+			targetInformation->setDayOfBirthday(modifyInformation->getBirthday());
 		else if (SelectType::CERTI_LEVEL == modifyType)
-			targetInfomation->setCertiLevel(modifyInfomation->getCertiLevel());
+			targetInformation->setCertiLevel(modifyInformation->getCertiLevel());
 	}
 
 	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation* modifyInformation)
@@ -578,15 +578,15 @@ private:
 class MockDataManager : public IDataManager {
 public:
 	MOCK_METHOD(void, addEmployee, (EmployeeInformation& EmployeeInformation), (override));
-	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation), (override));
-	MOCK_METHOD(ProcessResult*, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation), (override));
-	MOCK_METHOD(ProcessResult*, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation), (override));
+	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation), (override));
+	MOCK_METHOD(ProcessResult*, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation), (override));
+	MOCK_METHOD(ProcessResult*, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation), (override));
 
 	void DelegateToFake() {
 		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& EmployeeInformation) {return fake_.addEmployee(EmployeeInformation); });
-		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInfomation); });
-		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInfomation); });
-		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInfomation, modifyType, modifyInfomation); });
+		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
+		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInformation); });
+		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
 	}
 
 	size_t getNumOfFakeDataManager()

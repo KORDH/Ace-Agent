@@ -13,13 +13,13 @@ TEST_F(FixtureCommandProcessor, SuccessToAdd) {
 	SCENARIO("data Manager에 employee를 등록한다.");
 
 	GIVEN("1명의 employee 정보가 있다.");
-	EmployeeInformation employeeInfomation(14037560, "GILDONG", "HONG", CareerLevel::CL2, 2345, 3948, 1960, 12, 31, CertiLevel::PRO);
+	EmployeeInformation employeeInformation(14037560, "GILDONG", "HONG", CareerLevel::CL2, 2345, 3948, 1960, 12, 31, CertiLevel::PRO);
 	AddCommandProcessor addCommandProcessor(mockProcessor_);
 
 	WHEN("employee를 add 했을 때");
 	THEN("모든 정보를 1번만 로딩해야 하고,");
 
-	addCommandProcessor.runCommand(employeeInfomation);
+	addCommandProcessor.runCommand(employeeInformation);
 
 	AND("종료되어야 한다.");
 }
@@ -38,9 +38,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByEmployeeNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::EMPLOYEE_NUMBER);
-	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("1명이 삭제되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - 1);
@@ -62,9 +62,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_NAME);
-	EmployeeInformation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -89,9 +89,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFristName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FIRST_NAME);
-	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -116,9 +116,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_NAME);
-	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -144,9 +144,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCareerLevel) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CAREER_LEVEL);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("9명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -174,9 +174,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -201,9 +201,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMidPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MID_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -229,9 +229,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -257,9 +257,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -287,9 +287,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByYearOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::YEAR_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -317,9 +317,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMonthOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MONTH_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -347,9 +347,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByDayOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::DAY_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -377,9 +377,9 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCertiLevel) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CERTI_LEVEL);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
 	ProcessResult* pr = new ProcessResult();
-	deleteCommandProcessor.runCommand(employeeInfomation);
+	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("12명이 삭제되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -407,9 +407,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByEmployeeNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::EMPLOYEE_NUMBER);
-	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("1명이 검색되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
@@ -431,9 +431,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_NAME);
-	EmployeeInformation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -457,9 +457,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFristName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FIRST_NAME);
-	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -484,9 +484,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_NAME);
-	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -512,9 +512,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCareerLevel) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CAREER_LEVEL);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("9명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -542,9 +542,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -569,9 +569,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMidPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MID_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -597,9 +597,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_PHONE_NUMBER);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -625,9 +625,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -655,9 +655,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByYearOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::YEAR_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -685,9 +685,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMonthOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MONTH_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -715,9 +715,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByDayOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::DAY_OF_BIRTHDAY);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -745,9 +745,9 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCertiLevel) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CERTI_LEVEL);
-	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
+	EmployeeInformation employeeInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
 	ProcessResult* pr = new ProcessResult();
-	searchCommandProcessor.runCommand(employeeInfomation);
+	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("12명이 검색되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -774,11 +774,11 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
-	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
 	modifyCommandProcessor.setModifyInformation(false, SelectType::EMPLOYEE_NUMBER, SelectType::CERTI_LEVEL, &modifyInformation);
 	ProcessResult* pr = new ProcessResult();
-	modifyCommandProcessor.runCommand(employeeInfomation);
+	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("1명이 수정되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
@@ -834,9 +834,9 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFristName) {
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
 	modifyCommandProcessor.setModifyInformation(false, SelectType::FIRST_NAME, SelectType::CERTI_LEVEL, &modifyInformation);
-	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	modifyCommandProcessor.runCommand(employeeInfomation);
+	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 수정되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
@@ -866,9 +866,9 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByLastName) {
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
 	modifyCommandProcessor.setModifyInformation(false, SelectType::LAST_NAME, SelectType::CERTI_LEVEL, &modifyInformation);
-	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInformation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
-	modifyCommandProcessor.runCommand(employeeInfomation);
+	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 수정되어야 한다");
 	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
