@@ -13,7 +13,7 @@ TEST_F(FixtureCommandProcessor, SuccessToAdd) {
 	SCENARIO("data Manager에 employee를 등록한다.");
 
 	GIVEN("1명의 employee 정보가 있다.");
-	EmployeeInfomation employeeInfomation(14037560, "GILDONG", "HONG", CareerLevel::CL2, 2345, 3948, 1960, 12, 31, CertiLevel::PRO);
+	EmployeeInformation employeeInfomation(14037560, "GILDONG", "HONG", CareerLevel::CL2, 2345, 3948, 1960, 12, 31, CertiLevel::PRO);
 	AddCommandProcessor addCommandProcessor(mockProcessor_);
 
 	WHEN("employee를 add 했을 때");
@@ -39,7 +39,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByEmployeeNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::EMPLOYEE_NUMBER);
-	EmployeeInfomation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -63,7 +63,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_NAME);
-	EmployeeInfomation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -90,7 +90,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFristName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FIRST_NAME);
-	EmployeeInfomation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -117,7 +117,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastName) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_NAME);
-	EmployeeInfomation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -145,7 +145,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCareerLevel) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CAREER_LEVEL);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -175,7 +175,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -202,7 +202,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMidPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MID_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -230,7 +230,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastPhoneNumber) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -258,7 +258,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -288,7 +288,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByYearOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::YEAR_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -318,7 +318,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMonthOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MONTH_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -348,7 +348,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByDayOfBirthday) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::DAY_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -378,7 +378,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCertiLevel) {
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CERTI_LEVEL);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
 	ProcessResult* pr = new ProcessResult();
 	deleteCommandProcessor.runCommand(employeeInfomation);
 
@@ -408,7 +408,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByEmployeeNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::EMPLOYEE_NUMBER);
-	EmployeeInfomation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -432,7 +432,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_NAME);
-	EmployeeInfomation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -458,7 +458,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFristName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FIRST_NAME);
-	EmployeeInfomation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -485,7 +485,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastName) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_NAME);
-	EmployeeInfomation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -513,7 +513,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCareerLevel) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CAREER_LEVEL);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -543,7 +543,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -570,7 +570,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMidPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MID_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 4581, 0, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -598,7 +598,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastPhoneNumber) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_PHONE_NUMBER);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 2050, 0, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -626,7 +626,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 7, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -656,7 +656,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByYearOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::YEAR_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 2008, 0, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -686,7 +686,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMonthOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MONTH_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 7, 0, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -716,7 +716,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByDayOfBirthday) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::DAY_OF_BIRTHDAY);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 18, CertiLevel::NONE);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -746,7 +746,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCertiLevel) {
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CERTI_LEVEL);
-	EmployeeInfomation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
+	EmployeeInformation employeeInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::ADV);
 	ProcessResult* pr = new ProcessResult();
 	searchCommandProcessor.runCommand(employeeInfomation);
 
@@ -775,8 +775,8 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
-	EmployeeInfomation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
-	EmployeeInfomation modifyInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
+	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	EmployeeInformation modifyInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
 	modifyCommandProcessor.setModifyInformation(false, SelectType::EMPLOYEE_NUMBER, SelectType::CERTI_LEVEL,&modifyInfomation);
 	ProcessResult* pr = new ProcessResult();
 	modifyCommandProcessor.runCommand(employeeInfomation);
@@ -786,7 +786,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 	EXPECT_EQ(mockProcessor_.getProcessResult()->numOfRecord, 1);
 	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
 
-	EXPECT_EQ(mockProcessor_.getEmployeeInfomation(2117175).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(2117175).getCertiLevel(), CertiLevel::PRO);
 
 }
 //

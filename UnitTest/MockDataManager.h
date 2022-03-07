@@ -16,29 +16,29 @@ class FakeDataManager : public IDataManager {
 public:
 	FakeDataManager() {
 	}
-	virtual void addEmployee(EmployeeInfomation& employeeInfomation)
+	virtual void addEmployee(EmployeeInformation& EmployeeInformation)
 	{
-		unsigned int employeeNumber = employeeInfomation.getEmployeeNumber();
-		string fullName = employeeInfomation.getFirstName() + " " + employeeInfomation.getLastName();
-		unsigned int fullPhone = (employeeInfomation.getMidPhoneNumber() * 10000) + employeeInfomation.getLastPhoneNumber();
-		unsigned int fullBrithday = (employeeInfomation.getBirthday().getYear() * 10000) + (employeeInfomation.getBirthday().getMonth() * 100) + (employeeInfomation.getBirthday().getYear() * 1);
+		unsigned int employeeNumber = EmployeeInformation.getEmployeeNumber();
+		string fullName = EmployeeInformation.getFirstName() + " " + EmployeeInformation.getLastName();
+		unsigned int fullPhone = (EmployeeInformation.getMidPhoneNumber() * 10000) + EmployeeInformation.getLastPhoneNumber();
+		unsigned int fullBrithday = (EmployeeInformation.getBirthday().getYear() * 10000) + (EmployeeInformation.getBirthday().getMonth() * 100) + (EmployeeInformation.getBirthday().getYear() * 1);
 
-		fakeDataManager_.insert(make_pair(employeeNumber, employeeInfomation));
+		fakeDataManager_.insert(make_pair(employeeNumber, EmployeeInformation));
 		fakeDataManagerFullName_[fullName].push_back(employeeNumber);
-		fakeDataManagerFristName_[employeeInfomation.getFirstName()].push_back(employeeNumber);
-		fakeDataManagerLastName_[employeeInfomation.getLastName()].push_back(employeeNumber);
-		fakeDataManagerCareerLevel_[employeeInfomation.getCareerLevel()].push_back(employeeNumber);;
+		fakeDataManagerFristName_[EmployeeInformation.getFirstName()].push_back(employeeNumber);
+		fakeDataManagerLastName_[EmployeeInformation.getLastName()].push_back(employeeNumber);
+		fakeDataManagerCareerLevel_[EmployeeInformation.getCareerLevel()].push_back(employeeNumber);;
 		fakeDataManagerFullPhoneNumber_[fullPhone].push_back(employeeNumber);;
-		fakeDataManagerMidPhoneNumber_[employeeInfomation.getMidPhoneNumber()].push_back(employeeNumber);;
-		fakeDataManagerLastPhoneNumber_[employeeInfomation.getLastPhoneNumber()].push_back(employeeNumber);;
+		fakeDataManagerMidPhoneNumber_[EmployeeInformation.getMidPhoneNumber()].push_back(employeeNumber);;
+		fakeDataManagerLastPhoneNumber_[EmployeeInformation.getLastPhoneNumber()].push_back(employeeNumber);;
 		fakeDataManagerFullBirthDay_[fullBrithday].push_back(employeeNumber);;
-		fakeDataManagerYearOfBirthday_[employeeInfomation.getBirthday().getYear()].push_back(employeeNumber);;
-		fakeDataManagerMonthOfBirthday_[employeeInfomation.getBirthday().getMonth()].push_back(employeeNumber);;
-		fakeDataManagerDayOfBirthday_[employeeInfomation.getBirthday().getDay()].push_back(employeeNumber);;
-		fakeDataManagerCertiLevel_[employeeInfomation.getCertiLevel()].push_back(employeeNumber);;
+		fakeDataManagerYearOfBirthday_[EmployeeInformation.getBirthday().getYear()].push_back(employeeNumber);;
+		fakeDataManagerMonthOfBirthday_[EmployeeInformation.getBirthday().getMonth()].push_back(employeeNumber);;
+		fakeDataManagerDayOfBirthday_[EmployeeInformation.getBirthday().getDay()].push_back(employeeNumber);;
+		fakeDataManagerCertiLevel_[EmployeeInformation.getCertiLevel()].push_back(employeeNumber);;
 	}
 
-	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation)
+	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)
 	{
 		unsigned int employeeNumber = deleteInfomation.getEmployeeNumber();
 		string fullName = deleteInfomation.getFirstName() + " " + deleteInfomation.getLastName();
@@ -104,7 +104,7 @@ public:
 
 	ProcessResult* deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
 	{
-		EmployeeInfomation info = fakeDataManager_.at(emplyeeNumber);
+		EmployeeInformation info = fakeDataManager_.at(emplyeeNumber);
 		string fullName = info.getFirstName() + " " + info.getLastName();
 		unsigned int fullPhone = (info.getMidPhoneNumber() * 10000) + info.getLastPhoneNumber();
 		unsigned int fullBrithday = (info.getBirthday().getYear() * 10000) + (info.getBirthday().getMonth() * 100) + (info.getBirthday().getYear() * 1);
@@ -220,7 +220,7 @@ public:
 		return &processResult_;
 	}
 
-	virtual ProcessResult* searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation)
+	virtual ProcessResult* searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation)
 	{
 		unsigned int employeeNumber = searchInfomation.getEmployeeNumber();
 		string fullName = searchInfomation.getFirstName() + " " + searchInfomation.getLastName();
@@ -329,7 +329,7 @@ public:
 		return &processResult_;
 	}
 
-	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation, const SelectType modifyType, EmployeeInfomation* modifyInfomation)
+	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation)
 	{
 		unsigned int employeeNumber = searchInfomation.getEmployeeNumber();
 		string fullName = searchInfomation.getFirstName() + " " + searchInfomation.getLastName();
@@ -364,7 +364,7 @@ public:
 		//	return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInfomation.getCertiLevel());
 	}
 
-	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInfomation* targetInfomation, EmployeeInfomation* modifyInfomation)
+	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInformation* targetInfomation, EmployeeInformation* modifyInfomation)
 	{
 		if (SelectType::FIRST_NAME == modifyType)
 			targetInfomation->setFirstName(modifyInfomation->getFirstName());
@@ -386,7 +386,7 @@ public:
 			targetInfomation->setCertiLevel(modifyInfomation->getCertiLevel());
 	}
 
-	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInfomation * modifyInfomation)
+	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation * modifyInfomation)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
@@ -394,7 +394,7 @@ public:
 			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
 
 		//get
-		EmployeeInfomation info =  fakeDataManager_.at(emplyeeNumber);
+		EmployeeInformation info =  fakeDataManager_.at(emplyeeNumber);
 
 		//delete
 		deleteEmployeeByEmployeeNumber(emplyeeNumber);
@@ -408,7 +408,7 @@ public:
 		return &processResult_;
 	}
 
-	//ProcessResult* modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modify, EmployeeInfomation* modifyInfomation)
+	//ProcessResult* modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modify, EmployeeInformation* modifyInfomation)
 	//{
 	//	processResult_.numOfRecord = dataManagerMap[str].size();
 	//	vector<unsigned int> v = dataManagerMap[str];
@@ -424,7 +424,7 @@ public:
 	//	return &processResult_;
 	//}
 
-	//ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modify, EmployeeInfomation* modifyInfomation)
+	//ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modify, EmployeeInformation* modifyInfomation)
 	//{
 	//	processResult_.numOfRecord = dataManagerMap[careerLevel].size();
 	//	vector<unsigned int> v = dataManagerMap[careerLevel];
@@ -440,7 +440,7 @@ public:
 	//	return &processResult_;
 	//}
 
-	//ProcessResult* modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modify, EmployeeInfomation* modifyInfomation)
+	//ProcessResult* modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modify, EmployeeInformation* modifyInfomation)
 	//{
 	//	processResult_.numOfRecord = dataManagerMap[searchInt].size();
 	//	vector<unsigned int> v = dataManagerMap[searchInt];
@@ -456,7 +456,7 @@ public:
 	//	return &processResult_;
 	//}
 
-	//ProcessResult* modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modify, EmployeeInfomation* modifyInfomation)
+	//ProcessResult* modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modify, EmployeeInformation* modifyInfomation)
 	//{
 	//	processResult_.numOfRecord = dataManagerMap[certiLevel].size();
 	//	vector<unsigned int> v = dataManagerMap[certiLevel];
@@ -481,13 +481,13 @@ public:
 		return fakeDataManager_.size();
 	}
 
-	EmployeeInfomation & getEmployeeInfomation(unsigned int employeeNumber)
+	EmployeeInformation & getEmployeeInformation(unsigned int employeeNumber)
 	{
 		return fakeDataManager_.at(employeeNumber);
 	}
 
 protected:
-	map <unsigned int, EmployeeInfomation> fakeDataManager_;
+	map <unsigned int, EmployeeInformation> fakeDataManager_;
 	map <string, vector<unsigned int>> fakeDataManagerFullName_;
 	map <string, vector<unsigned int>> fakeDataManagerFristName_;
 	map <string, vector<unsigned int>> fakeDataManagerLastName_;
@@ -508,16 +508,16 @@ private:
 
 class MockDataManager : public IDataManager {
 public:
-	MOCK_METHOD(void, addEmployee, (EmployeeInfomation& employeeInfomation), (override));
-	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation), (override));
-	MOCK_METHOD(ProcessResult*, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation), (override));
-	MOCK_METHOD(ProcessResult*, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation, const SelectType modifyType, EmployeeInfomation* modifyInfomation), (override));
+	MOCK_METHOD(void, addEmployee, (EmployeeInformation& EmployeeInformation), (override));
+	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation), (override));
+	MOCK_METHOD(ProcessResult*, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation), (override));
+	MOCK_METHOD(ProcessResult*, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation), (override));
 
 	void DelegateToFake() {
-		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInfomation& employeeInfomation) {return fake_.addEmployee(employeeInfomation); });
-		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInfomation); });
-		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInfomation); });
-		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInfomation& searchInfomation, const SelectType modifyType, EmployeeInfomation * modifyInfomation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInfomation, modifyType, modifyInfomation); });
+		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& EmployeeInformation) {return fake_.addEmployee(EmployeeInformation); });
+		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInfomation); });
+		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInfomation); });
+		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation * modifyInfomation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInfomation, modifyType, modifyInfomation); });
 	}
 
 	size_t getNumOfFakeDataManager()
@@ -530,9 +530,9 @@ public:
 		return fake_.getProcessResult();
 	}
 
-	EmployeeInfomation& getEmployeeInfomation(unsigned int employeeNumber)
+	EmployeeInformation& getEmployeeInformation(unsigned int employeeNumber)
 	{
-		return fake_.getEmployeeInfomation(employeeNumber);
+		return fake_.getEmployeeInformation(employeeNumber);
 	}
 private:
 	FakeDataManager fake_;  // Keeps an instance of the fake in the mock.

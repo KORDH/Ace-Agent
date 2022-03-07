@@ -147,7 +147,7 @@
     <Text Include="output_answer.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EmployeeInfomation.h" />
+    <ClInclude Include="EmployeeInformation.h" />
     <ClInclude Include="IDataManager.h" />
     <ClInclude Include="ProcessResult.h" />
     <ClInclude Include="Processor.h" />

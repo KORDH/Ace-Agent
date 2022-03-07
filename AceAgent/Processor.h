@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EmployeeInfomation.h"
+#include "EmployeeInformation.h"
 #include "ProcessResult.h"
 #include "SelectType.h"
 #include "IDataManager.h"
@@ -9,7 +9,7 @@
 
 class CommandProcessor {
 public:
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) = 0;
+	virtual void runCommand(EmployeeInformation& employeeInfomation) = 0;
 };
 
 class AddCommandProcessor : public CommandProcessor {
@@ -17,7 +17,7 @@ public:
 	AddCommandProcessor(IDataManager& processor);
 	~AddCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		processor_.addEmployee(employeeInfomation);
 	}
 protected:
@@ -31,7 +31,7 @@ public:
 	DeleteCommandProcessor(IDataManager& processor);
 	~DeleteCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInfomation));
 	}
 
@@ -53,7 +53,7 @@ public:
 	SearchCommandProcessor(IDataManager& processor);
 	~SearchCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInfomation));
 	}
 
@@ -76,11 +76,11 @@ public:
 	ModifyCommandProcessor(IDataManager& processor);
 	~ModifyCommandProcessor();
 
-	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+	virtual void runCommand(EmployeeInformation& employeeInfomation) override {
 		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInfomation, modifyType_, modifyInfomation_));
 	}
 
-	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInfomation* modifyInfomation);
+	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation* modifyInfomation);
 	ProcessResult* getProcessResult();
 	void setProcessResult(ProcessResult* processResult);
 
@@ -91,6 +91,6 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
 	SelectType modifyType_ = SelectType::NONE;
-	EmployeeInfomation* modifyInfomation_;
+	EmployeeInformation* modifyInfomation_;
 	ProcessResult* processResult_ = nullptr;
 };

@@ -70,7 +70,7 @@ ModifyCommandProcessor::~ModifyCommandProcessor()
 {
 }
 
-void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInfomation* modifyInfomation)
+void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInformation* modifyInfomation)
 {
 	isDetailPrint_ = isDetailPrint;
 	searchType_ = searchType;

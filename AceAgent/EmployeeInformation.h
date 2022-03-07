@@ -55,11 +55,11 @@ private:
 	unsigned int day_;
 };
 
-class EmployeeInfomation
+class EmployeeInformation
 {
 
 public:
-	EmployeeInfomation(unsigned int employeeNumber, string firstName, string lastName,
+	EmployeeInformation(unsigned int employeeNumber, string firstName, string lastName,
 		CareerLevel careerLevel, unsigned int midPhoneNumber, unsigned int lastPhoneNumber,
 		unsigned int  yearOfBirthday, unsigned int  monthOfBirthday, unsigned int  dayOfBirthday, CertiLevel certiLevel) :
 		employeeNumber_{ employeeNumber },
