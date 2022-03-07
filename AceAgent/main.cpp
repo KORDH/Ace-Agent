@@ -1,18 +1,21 @@
 ﻿#include <fstream>
 #include <string>
+#include <iostream>
 #include "CommandHandler.h"
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-    ifstream inputFile("input.txt");
+    if (argc != 3) 
+    {
+        cerr << "[Error] Usage: " << argv[0] << " input_file output_file" << endl;
 
-    if (inputFile.fail())  exit(1);
+        exit(EXIT_FAILURE);
+    }
 
     auto commandHandler{ new CommandHandler };
-    commandHandler->Run(inputFile);
+    commandHandler->Run(argv[1], argv[2]);
 
-    inputFile.close();
-    return 0;
+    return EXIT_SUCCESS;
 }

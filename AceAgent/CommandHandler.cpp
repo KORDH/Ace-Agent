@@ -4,8 +4,13 @@
 #include <string>
 
 void
-CommandHandler::Run(ifstream& inputFile)
+CommandHandler::Run(string input, string output)
 {
+    ifstream inputFile(input);
+    ofstream outputFile(output);
+
+    if (inputFile.fail()) exit(EXIT_FAILURE);
+
     CommandParser* parser{ new CommandParser() };
 
     while (!inputFile.eof())
@@ -16,6 +21,9 @@ CommandHandler::Run(ifstream& inputFile)
         ParseInfo parseInfo;
         parser->parseCommandLine(commandLine, parseInfo);
 
-        /* Call CommandProcessor */       
+        /* Call CommandProcessor */
     }
+
+    inputFile.close();
+    outputFile.close();
 }
