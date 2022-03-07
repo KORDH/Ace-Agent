@@ -8,6 +8,8 @@
 #include "EmployeeInformation.h"
 #include "datamanager.h"
 
+#define MAX_SEARCH_CNT	5
+
 using namespace std;
 
 class SearchManager {
@@ -17,10 +19,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.employeeNumber_ == employeeInformation.employeeNumber_) {
-				result.push_back(iter->second);
+			if (iter.second.employeeNumber_ == employeeInformation.employeeNumber_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -29,10 +34,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.name_.first == employeeInformation.name_.first && iter->second.name_.last == employeeInformation.name_.last) {
-				result.push_back(iter->second);
+			if (iter.second.name_.first == employeeInformation.name_.first && iter.second.name_.last == employeeInformation.name_.last) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -41,10 +49,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeFirstName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.name_.first == employeeInformation.name_.first) {
-				result.push_back(iter->second);
+			if (iter.second.name_.first == employeeInformation.name_.first) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -53,10 +64,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeLastName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.name_.last == employeeInformation.name_.last) {
-				result.push_back(iter->second);
+			if (iter.second.name_.last == employeeInformation.name_.last) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -65,12 +79,15 @@ public:
 	vector<EmployeeInformation> SearchEmployeeBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.birthday_.year_ == employeeInformation.birthday_.year_
-				&& iter->second.birthday_.month_ == employeeInformation.birthday_.month_
-				&& iter->second.birthday_.day_ == employeeInformation.birthday_.day_) {
-				result.push_back(iter->second);
+			if (iter.second.birthday_.year_ == employeeInformation.birthday_.year_
+				&& iter.second.birthday_.month_ == employeeInformation.birthday_.month_
+				&& iter.second.birthday_.day_ == employeeInformation.birthday_.day_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -79,10 +96,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeYearOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.birthday_.year_ == employeeInformation.birthday_.year_) {
-				result.push_back(iter->second);
+			if (iter.second.birthday_.year_ == employeeInformation.birthday_.year_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -91,10 +111,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeMonthOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.birthday_.month_ == employeeInformation.birthday_.month_) {
-				result.push_back(iter->second);
+			if (iter.second.birthday_.month_ == employeeInformation.birthday_.month_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -103,10 +126,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeDayOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.birthday_.day_ == employeeInformation.birthday_.day_) {
-				result.push_back(iter->second);
+			if (iter.second.birthday_.day_ == employeeInformation.birthday_.day_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -115,11 +141,14 @@ public:
 	vector<EmployeeInformation> SearchEmployeePhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.phoneNumber_.last == employeeInformation.phoneNumber_.last
-				&& iter->second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
-				result.push_back(iter->second);
+			if (iter.second.phoneNumber_.last == employeeInformation.phoneNumber_.last
+				&& iter.second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -128,10 +157,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeMidPhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
-				result.push_back(iter->second);
+			if (iter.second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -140,10 +172,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeLastPhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.phoneNumber_.last == employeeInformation.phoneNumber_.last) {
-				result.push_back(iter->second);
+			if (iter.second.phoneNumber_.last == employeeInformation.phoneNumber_.last) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -153,10 +188,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeCareerLevel(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.careerLevel_ == employeeInformation.careerLevel_) {
-				result.push_back(iter->second);
+			if (iter.second.careerLevel_ == employeeInformation.careerLevel_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
@@ -165,10 +203,13 @@ public:
 	vector<EmployeeInformation> SearchEmployeeCertiLevel(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
 		vector <EmployeeInformation> result;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
+		for (const auto& iter : DataMap)
 		{
-			if (iter->second.certiLevel_ == employeeInformation.certiLevel_) {
-				result.push_back(iter->second);
+			if (iter.second.certiLevel_ == employeeInformation.certiLevel_) {
+				result.push_back(iter.second);
+
+				if (result.size() >= MAX_SEARCH_CNT)
+					break;
 			}
 		}
 		return result;
