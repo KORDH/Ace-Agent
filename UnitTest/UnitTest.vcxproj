@@ -35,14 +35,24 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Processor_unittest.h" />
+    <ClInclude Include="SearchTest.h" />
     <ClInclude Include="TestUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Operator_Test.cpp" />
+    <ClCompile Include="Operator_Test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SearchTest.cpp" />
     <ClCompile Include="MockDataManager.h" />
-    <ClCompile Include="Processor_unittest.cpp" />
-    <ClCompile Include="Parser_UnitTest.cpp" />
+    <ClCompile Include="Processor_unittest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Parser_UnitTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

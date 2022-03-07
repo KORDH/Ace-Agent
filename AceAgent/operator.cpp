@@ -45,7 +45,7 @@ Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
 
-    list = pSearchManager->SearchEmployeeData(pDataManager, selectType, employeeInfo);
+    list = pSearchManager->SearchEmployeeData(pDataManager, SelectType, employeeInfo);
 
     result.numOfRecord = list.size();
 
@@ -78,7 +78,7 @@ Operator::schEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
     
-    list = pSearchManager->SearchEmployeeData(pDataManager, selectType, employeeInfo);
+    list = pSearchManager->SearchEmployeeData(pDataManager, SelectType, employeeInfo);
 
     result.numOfRecord = list.size();
 

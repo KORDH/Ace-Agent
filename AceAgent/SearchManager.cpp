@@ -1,104 +1,48 @@
 #include "SearchManager.h"
 
-multimap<unsigned int, EmployeeInformation> SearchManager::getIntegerDataMap(DataType searchType) {
-	multimap<unsigned int, EmployeeInformation> result;
-	switch (searchType) {
-	case DataType::EMPLOYEE_NUMBER:
-		result = employeeNumberMap;
-		break;
-	case DataType::YEAR_OF_BIRTHDAY:
-		result = yearOfBirthdayMap;
-		break;
-	case DataType::MONTH_OF_BIRTHDAY:
-		result = monthOfBirthdayMap;
-		break;
-	case DataType::DAY_OF_BIRTHDAY:
-		result = dayOfBirthdayMap;
-		break;
-	case DataType::CAREER_LEVEL:
-		result = careerLevelMap;
-		break;
-	deault:
-		cout << "getDataMap : DataType이 비정상적입니다." << endl;
-		break;
-	}
-
-	return result;
-}
-
-multimap<string, EmployeeInformation> SearchManager::getCharacterDataMap(DataType searchType) {
-	multimap<string, EmployeeInformation> result;
-	switch (searchType) {
-	case DataType::CERTI_LEVEL:
-		result = certiLevelMap;
-		break;
-	case DataType::FULL_NAME:
-		result = fullNameMap;
-		break;
-	case DataType::FIRST_NAME:
-		result = firstNameMap;
-		break;
-	case DataType::LAST_NAME:
-		result = lastNameMap;
-		break;
-	case DataType::PHONE_NUMBER:
-		result = phoneNumberMap;
-		break;
-	case DataType::MID_PHONE_NUMBER:
-		result = midPhoneNumberMap;
-		break;
-	case DataType::LAST_PHONE_NUMBER:
-		result = lastPhoneNumberMap;
-		break;
-	case DataType::BIRTHDAY:
-		result = birthdayMap;
-		break;
-	deault:
-		cout << "getDataMap : DataType이 비정상적입니다." << endl;
-		break;
-	}
-
-	return result;
-}
-
-vector<EmployeeInformation> SearchManager::SearchEmployeeData(DataType searchType, unsigned int keyData) {
+vector<EmployeeInformation> SearchManager::SearchEmployeeData(DataManager* pDataManager, SelectType searchType, EmployeeInformation employeeInformation) {
 	vector <EmployeeInformation> result;
-	multimap<unsigned int, EmployeeInformation> DataMap = getIntegerDataMap(searchType);
+	map<unsigned int, EmployeeInformation> DataMap;
 
-	if (DataMap.count(keyData) == 0) {
-		cout << "SearchManager(Character) : 해당 KeyData를 가진 employee가 없습니다." << endl;
-		return result;
+	result.clear();
+
+	DataMap = pDataManager->getEmployeeMap();
+	
+	switch (searchType) {
+	case SelectType::EMPLOYEE_NUMBER:
+		return SearchEmployeeNumber(DataMap, employeeInformation);
+	case SelectType::FULL_NAME:
+		return SearchEmployeeName(DataMap, employeeInformation);
+	case SelectType::FIRST_NAME:
+		return SearchEmployeeFirstName(DataMap, employeeInformation);
+	case SelectType::LAST_NAME:
+		return SearchEmployeeLastName(DataMap, employeeInformation);
+	case SelectType::FULL_BIRTHDAY:
+		return SearchEmployeeBirthday(DataMap, employeeInformation);
+	case SelectType::YEAR_OF_BIRTHDAY:
+		return SearchEmployeeYearOfBirthday(DataMap, employeeInformation);
+	case SelectType::MONTH_OF_BIRTHDAY:
+		return SearchEmployeeMonthOfBirthday(DataMap, employeeInformation);
+	case SelectType::DAY_OF_BIRTHDAY:
+		return SearchEmployeeDayOfBirthday(DataMap, employeeInformation);
+	case SelectType::FULL_PHONE_NUMBER:
+		return SearchEmployeePhoneNumber(DataMap, employeeInformation);
+	case SelectType::MID_PHONE_NUMBER:
+		return SearchEmployeeMidPhoneNumber(DataMap, employeeInformation);
+	case SelectType::LAST_PHONE_NUMBER:
+		return SearchEmployeeLastPhoneNumber(DataMap, employeeInformation);
+	case SelectType::CAREER_LEVEL:
+		return SearchEmployeeCareerLevel(DataMap, employeeInformation);
+	case SelectType::CERTI_LEVEL:
+		return SearchEmployeeCertiLevel(DataMap, employeeInformation);
+	default:
+		cout << "해당 Type으로 검색이 불가능합니다. 다시 입력해주세요." << endl;
+		break;
 	}
-
-	for (auto i = DataMap.lower_bound(keyData); i != DataMap.upper_bound(keyData); i++)
-	{
-		result.push_back(i->second);
-		// cout << "result data : " << i->second.employeeNumber << endl;
-	}
-
-	sort(result.begin(), result.end(), cmp);
 
 	return result;
 }
 
-vector<EmployeeInformation> SearchManager::SearchEmployeeData(DataType searchType, string keyData) {
-	vector <EmployeeInformation> result;
-	multimap<string, EmployeeInformation> DataMap = getCharacterDataMap(searchType);
 
-	if (DataMap.count(keyData) == 0) {
-		cout << "SearchManager(Character) : 해당 KeyData를 가진 employee가 없습니다." << endl;
-		return result;
-	}
-
-	for (auto i = DataMap.lower_bound(keyData); i != DataMap.upper_bound(keyData); i++)
-	{
-		result.push_back(i->second);
-		// cout << "result data : " << i->second.employeeNumber << endl;
-	}
-
-	sort(result.begin(), result.end(), cmp);
-
-	return result;
-}
 
 
