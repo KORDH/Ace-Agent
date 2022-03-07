@@ -39,13 +39,13 @@ Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
     string record;
     ProcessResult result;
     vector<EmployeeInformation> list;
-    
+
     if (SelectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
 
-    list = pSearchManager->SearchEmployeeData(pDataManager, selectType, employeeInfo);
+    list = pSearchManager->SearchEmployeeData(pDataManager, SelectType, employeeInfo);
 
     result.numOfRecord = list.size();
 
@@ -77,8 +77,8 @@ Operator::schEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
-    
-    list = pSearchManager->SearchEmployeeData(pDataManager, selectType, employeeInfo);
+
+    list = pSearchManager->SearchEmployeeData(pDataManager, SelectType, employeeInfo);
 
     result.numOfRecord = list.size();
 
@@ -101,7 +101,7 @@ Operator::modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInforma
     Operator* pOperator = new Operator;
     ProcessResult result;
     vector<EmployeeInformation> list;
-    
+
     if (selectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
