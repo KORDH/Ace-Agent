@@ -102,17 +102,13 @@ public:
 		}
 	}
 
-	ProcessResult* deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
+	void deleteAllMapByEmployeeNumber(unsigned int emplyeeNumber)
 	{
 		EmployeeInformation info = fakeDataManager_.at(emplyeeNumber);
+
 		string fullName = info.getFirstName() + " " + info.getLastName();
 		unsigned int fullPhone = (info.getMidPhoneNumber() * 10000) + info.getLastPhoneNumber();
 		unsigned int fullBrithday = (info.getBirthday().getYear() * 10000) + (info.getBirthday().getMonth() * 100) + (info.getBirthday().getYear() * 1);
-
-		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
-
-		if (processResult_.numOfRecord)
-			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
 
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerFullName_[fullName]);
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerFristName_[info.getFirstName()]);
@@ -126,8 +122,18 @@ public:
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerMonthOfBirthday_[info.getBirthday().getMonth()]);
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerDayOfBirthday_[info.getBirthday().getDay()]);
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerCertiLevel_[info.getCertiLevel()]);
-
 		fakeDataManager_.erase(emplyeeNumber);
+
+	}
+
+	ProcessResult* deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
+	{
+		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
+
+		if (processResult_.numOfRecord)
+			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
+
+		deleteAllMapByEmployeeNumber(emplyeeNumber);
 
 		return &processResult_;
 	}
@@ -140,9 +146,13 @@ public:
 		sort(v.begin(), v.end(), employeeNumberCompare);
 
 		int i = 0;
-		for (auto it = v.begin(); it != v.end(); ++it)
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
 			processResult_.printRecord[i++] = to_string(*it);
+		}
+
+		for (auto it = v.begin(); it != v.end(); ++it)
+		{
 			fakeDataManager_.erase(*it);
 		}
 
@@ -273,7 +283,7 @@ public:
 		sort(v.begin(), v.end(), employeeNumberCompare);
 
 		int i = 0;
-		for (auto it = v.begin(); it != v.end(); ++it)
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
 			processResult_.printRecord[i++] = to_string(*it);
 		}
@@ -329,21 +339,21 @@ public:
 		return &processResult_;
 	}
 
-	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation)
+	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInfomation)
 	{
-		unsigned int employeeNumber = searchInfomation.getEmployeeNumber();
-		string fullName = searchInfomation.getFirstName() + " " + searchInfomation.getLastName();
-		unsigned int fullPhone = (searchInfomation.getMidPhoneNumber() * 10000) + searchInfomation.getLastPhoneNumber();
-		unsigned int fullBrithday = (searchInfomation.getBirthday().getYear() * 10000) + (searchInfomation.getBirthday().getMonth() * 100) + (searchInfomation.getBirthday().getYear() * 1);
+		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
+		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
+		unsigned int fullPhone = (searchInformation.getMidPhoneNumber() * 10000) + searchInformation.getLastPhoneNumber();
+		unsigned int fullBrithday = (searchInformation.getBirthday().getYear() * 10000) + (searchInformation.getBirthday().getMonth() * 100) + (searchInformation.getBirthday().getYear() * 1);
 
 		if (SelectType::EMPLOYEE_NUMBER == searchType)
-			return modifyEmployeeByEmployeeNumber(searchInfomation.getEmployeeNumber(), modifyType, modifyInfomation);
-		//else if (SelectType::FULL_NAME == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerFullName_, fullName);
-		//else if (SelectType::FIRST_NAME == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerFristName_, searchInfomation.getFirstName());
-		//else if (SelectType::LAST_NAME == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerLastName_, searchInfomation.getLastName());
+			return modifyEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber(), modifyType, modifyInfomation);
+		else if (SelectType::FULL_NAME == searchType)
+			return modifyEmployeeMap(fakeDataManagerFullName_, fullName, modifyType, modifyInfomation);
+		else if (SelectType::FIRST_NAME == searchType)
+			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, modifyInfomation);
+		else if (SelectType::LAST_NAME == searchType)
+			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, modifyInfomation);
 		//else if (SelectType::CAREER_LEVEL == searchType)
 		//	return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInfomation.getCareerLevel());
 		//else if (SelectType::FULL_PHONE_NUMBER == searchType)
@@ -386,7 +396,7 @@ public:
 			targetInfomation->setCertiLevel(modifyInfomation->getCertiLevel());
 	}
 
-	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation * modifyInfomation)
+	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation * modifyInformation)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
@@ -400,7 +410,7 @@ public:
 		deleteEmployeeByEmployeeNumber(emplyeeNumber);
 
 		//modify
-		modifyEmployeeInformation(modifyType, &info, modifyInfomation);
+		modifyEmployeeInformation(modifyType, &info, modifyInformation);
 		
 		//add
 		addEmployee(info);
@@ -408,21 +418,36 @@ public:
 		return &processResult_;
 	}
 
-	//ProcessResult* modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modify, EmployeeInformation* modifyInfomation)
-	//{
-	//	processResult_.numOfRecord = dataManagerMap[str].size();
-	//	vector<unsigned int> v = dataManagerMap[str];
+	ProcessResult* modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	{
+		processResult_.numOfRecord = dataManagerMap[str].size();
+		vector<unsigned int> v = dataManagerMap[str];
 
-	//	sort(v.begin(), v.end(), employeeNumberCompare);
+		sort(v.begin(), v.end(), employeeNumberCompare);
 
-	//	int i = 0;
-	//	for (auto it = v.begin(); it != v.end(); ++it)
-	//	{
-	//		processResult_.printRecord[i++] = to_string(*it);
-	//	}
+		int i = 0;
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
+		{
+			processResult_.printRecord[i++] = to_string(*it);
+		}
 
-	//	return &processResult_;
-	//}
+		for (auto it = v.begin(); it != v.end(); ++it)
+		{
+			//get
+			EmployeeInformation info = fakeDataManager_.at(*it);
+
+			//delete
+			deleteAllMapByEmployeeNumber(*it);
+
+			//modify
+			modifyEmployeeInformation(modifyType, &info, modifyInformation);
+
+			//add
+			addEmployee(info);
+		}
+
+		return &processResult_;
+	}
 
 	//ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modify, EmployeeInformation* modifyInfomation)
 	//{

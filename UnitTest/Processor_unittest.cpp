@@ -776,8 +776,8 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation employeeInfomation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
-	EmployeeInformation modifyInfomation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
-	modifyCommandProcessor.setModifyInformation(false, SelectType::EMPLOYEE_NUMBER, SelectType::CERTI_LEVEL,&modifyInfomation);
+	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
+	modifyCommandProcessor.setModifyInformation(false, SelectType::EMPLOYEE_NUMBER, SelectType::CERTI_LEVEL,&modifyInformation);
 	ProcessResult* pr = new ProcessResult();
 	modifyCommandProcessor.runCommand(employeeInfomation);
 
@@ -789,88 +789,103 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(2117175).getCertiLevel(), CertiLevel::PRO);
 
 }
-//
-//TEST_F(FixtureCommandProcessor, SuccessToModifyByFullName) {
-//	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
-//	SCENARIO("data Manager에 employee를 수정한다.");
-//
-//	GIVEN("set up에 등록된 employee 정보가 있다.");
-//	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
-//	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
-//
-//	WHEN("detailPrint 옵션이 disable되고 employee를 Modify 했을 때");
-//	THEN("Modify는 1번 로딩해야 하고,");
-//	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
-//
-//	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
-//	modifyCommandProcessor.setModifyInformation(false, SelectType::FULL_NAME);
-//	EmployeeInfomation employeeInfomation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
-//	ProcessResult* pr = new ProcessResult();
-//	modifyCommandProcessor.runCommand(employeeInfomation);
-//
-//	AND("2명이 수정되어야 한다");
-//	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
-//	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
-//	EXPECT_EQ(result, 2);
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-//}
-//
-//TEST_F(FixtureCommandProcessor, SuccessToModifyByFristName) {
-//	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
-//	SCENARIO("data Manager에 employee를 수정한다.");
-//
-//	GIVEN("set up에 등록된 employee 정보가 있다.");
-//	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
-//	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
-//
-//	WHEN("employee를 Modify 했을 때");
-//	THEN("Modify는 1번 로딩해야 하고,");
-//	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
-//
-//	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
-//	modifyCommandProcessor.setModifyInformation(false, SelectType::FIRST_NAME);
-//	EmployeeInfomation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
-//	ProcessResult* pr = new ProcessResult();
-//	modifyCommandProcessor.runCommand(employeeInfomation);
-//
-//	AND("3명이 수정되어야 한다");
-//	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
-//	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
-//	EXPECT_EQ(result, 3);
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-//}
-//
-//TEST_F(FixtureCommandProcessor, SuccessToModifyByLastName) {
-//	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
-//	SCENARIO("data Manager에 employee를 수정한다.");
-//
-//	GIVEN("set up에 등록된 employee 정보가 있다.");
-//	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
-//	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
-//
-//	WHEN("employee를 Modify 했을 때");
-//	THEN("Modify는 1번 로딩해야 하고,");
-//	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
-//
-//	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
-//	modifyCommandProcessor.setModifyInformation(false, SelectType::LAST_NAME);
-//	EmployeeInfomation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
-//	ProcessResult* pr = new ProcessResult();
-//	modifyCommandProcessor.runCommand(employeeInfomation);
-//
-//	AND("4명이 수정되어야 한다");
-//	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
-//	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
-//	EXPECT_EQ(result, 4);
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
-//	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115044");
-//}
-//
+
+TEST_F(FixtureCommandProcessor, SuccessToModifyByFullName) {
+	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
+	SCENARIO("data Manager에 employee를 수정한다.");
+
+	GIVEN("set up에 등록된 employee 정보가 있다.");
+	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
+	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
+
+	WHEN("detailPrint 옵션이 disable되고 employee를 Modify 했을 때");
+	THEN("Modify는 1번 로딩해야 하고,");
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
+
+	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
+	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
+	modifyCommandProcessor.setModifyInformation(false, SelectType::FULL_NAME,SelectType::CERTI_LEVEL, &modifyInformation);
+	EmployeeInformation employeeInformation(0, "TTETHU", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	ProcessResult* pr = new ProcessResult();
+	modifyCommandProcessor.runCommand(employeeInformation);
+
+	AND("2명이 수정되어야 한다");
+	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
+	EXPECT_EQ(result, 2);
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
+}
+
+TEST_F(FixtureCommandProcessor, SuccessToModifyByFristName) {
+	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
+	SCENARIO("data Manager에 employee를 수정한다.");
+
+	GIVEN("set up에 등록된 employee 정보가 있다.");
+	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
+	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
+
+	WHEN("employee를 Modify 했을 때");
+	THEN("Modify는 1번 로딩해야 하고,");
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
+
+	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
+	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
+	modifyCommandProcessor.setModifyInformation(false, SelectType::FIRST_NAME, SelectType::CERTI_LEVEL, &modifyInformation);
+	EmployeeInformation employeeInfomation(0, "TTETHU", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	ProcessResult* pr = new ProcessResult();
+	modifyCommandProcessor.runCommand(employeeInfomation);
+
+	AND("3명이 수정되어야 한다");
+	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
+	EXPECT_EQ(result, 3);
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115042).getCertiLevel(), CertiLevel::PRO);
+}
+
+TEST_F(FixtureCommandProcessor, SuccessToModifyByLastName) {
+	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
+	SCENARIO("data Manager에 employee를 수정한다.");
+
+	GIVEN("set up에 등록된 employee 정보가 있다.");
+	size_t numOfFakeDataManager = mockProcessor_.getNumOfFakeDataManager();
+	std::cout << "setup 등록 employee count : " << numOfFakeDataManager << std::endl;
+
+	WHEN("employee를 Modify 했을 때");
+	THEN("Modify는 1번 로딩해야 하고,");
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
+
+	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);	
+	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
+	modifyCommandProcessor.setModifyInformation(false, SelectType::LAST_NAME, SelectType::CERTI_LEVEL, &modifyInformation);
+	EmployeeInformation employeeInfomation(0, "", "HBO", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
+	ProcessResult* pr = new ProcessResult();
+	modifyCommandProcessor.runCommand(employeeInfomation);
+
+	AND("4명이 수정되어야 한다");
+	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
+	EXPECT_EQ(result, 4);
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115044");
+
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115043).getCertiLevel(), CertiLevel::PRO);
+	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115044).getCertiLevel(), CertiLevel::PRO);
+}
+
 //TEST_F(FixtureCommandProcessor, SuccessToModifyByCareerLevel) {
 //	FEATURE("ModifyCommandProcessor은 data Manager에 employee를 수정할 수 있다.");
 //	SCENARIO("data Manager에 employee를 수정한다.");
