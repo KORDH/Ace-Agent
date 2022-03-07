@@ -130,7 +130,7 @@ public:
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
 		if (processResult_.numOfRecord)
-			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
+			processResult_.printRecord.push_back(to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber()));
 
 		deleteAllMapByEmployeeNumber(emplyeeNumber);
 
@@ -147,7 +147,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -170,7 +170,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -193,7 +193,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -216,7 +216,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -269,7 +269,7 @@ public:
 		processResult_.numOfRecord = fakeDataManager_.count(empplyeeNumber);
 
 		if (processResult_.numOfRecord)
-			processResult_.printRecord[0] = to_string(fakeDataManager_.at(empplyeeNumber).getEmployeeNumber());
+			processResult_.printRecord.push_back(to_string(fakeDataManager_.at(empplyeeNumber).getEmployeeNumber()));
 
 		return &processResult_;
 	}
@@ -284,7 +284,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		return &processResult_;
@@ -300,7 +300,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		return &processResult_;
@@ -316,7 +316,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		return &processResult_;
@@ -332,7 +332,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		return &processResult_;
@@ -400,7 +400,7 @@ public:
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
 		if (processResult_.numOfRecord)
-			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
+			processResult_.printRecord.push_back(to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber()));
 
 		//get
 		EmployeeInformation info = fakeDataManager_.at(emplyeeNumber);
@@ -427,7 +427,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -458,7 +458,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -489,7 +489,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
@@ -520,7 +520,7 @@ public:
 		int i = 0;
 		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
 		{
-			processResult_.printRecord[i++] = to_string(*it);
+			processResult_.printRecord.push_back(to_string(*it));
 		}
 
 		for (auto it = v.begin(); it != v.end(); ++it)
