@@ -9,19 +9,19 @@ using namespace std;
 
 struct EmployeeInformation
 {
-	unsigned int employeeNumber;
+	unsigned int employeeNumber_;
 	unsigned int yearOfBirthday;
 	unsigned int monthOfBirthday;
 	unsigned int dayOfBirthday;
-	unsigned int careerLevel;
-	string certiLevel;
+	unsigned int careerLevel_;
+	string certiLevel_;
 	string fullName;
 	string firstName;
 	string lastName;
-	string phoneNumber;
+	string phoneNumber_;
 	string midPhoneNumber;
 	string lastPhoneNumber;
-	string birthday;
+	string birthday_;
 };
 
 
@@ -61,19 +61,19 @@ multimap<string, EmployeeInformation> birthdayMap;
 
 bool cmp(const EmployeeInformation& a, const EmployeeInformation& b)
 {
-	if (a.employeeNumber >= RANGE && b.employeeNumber >= RANGE) {
-		if (a.employeeNumber > b.employeeNumber)
+	if (a.employeeNumber_ >= RANGE && b.employeeNumber_ >= RANGE) {
+		if (a.employeeNumber_ > b.employeeNumber_)
 			return false;
 	}
-	else if (a.employeeNumber >= RANGE) {
+	else if (a.employeeNumber_ >= RANGE) {
 		return true;
 	}
-	else if (b.employeeNumber >= RANGE) {
+	else if (b.employeeNumber_ >= RANGE) {
 		return false;
 	}
 	else
 	{
-		if (a.employeeNumber > b.employeeNumber)
+		if (a.employeeNumber_ > b.employeeNumber_)
 			return false;
 	}
 

@@ -8,13 +8,13 @@ TEST(ParserUnitest, ParsingADD)
 	ParseInfo parseInfo_Answer;
 
 	parseInfo_Answer.command = Command::ADD;
-	parseInfo_Answer.employee.employeeNumber = 15123099;
-	parseInfo_Answer.employee.name.first = "VXIHXOTH";
-	parseInfo_Answer.employee.name.last = "JHOP";
-	parseInfo_Answer.employee.careerLevel = CareerLevel::CL3;
-	parseInfo_Answer.employee.phoneNumber = { 3112, 2609 };
-	parseInfo_Answer.employee.birthday = { 1977, 12, 11 };
-	parseInfo_Answer.employee.certiLevel = CertiLevel::ADV;
+	parseInfo_Answer.employee.employeeNumber_ = 15123099;
+	parseInfo_Answer.employee.name_.first = "VXIHXOTH";
+	parseInfo_Answer.employee.name_.last = "JHOP";
+	parseInfo_Answer.employee.careerLevel_ = CareerLevel::CL3;
+	parseInfo_Answer.employee.phoneNumber_ = { 3112, 2609 };
+	parseInfo_Answer.employee.birthday_ = { 1977, 12, 11 };
+	parseInfo_Answer.employee.certiLevel_ = CertiLevel::ADV;
 
 	string commandLine = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
 
@@ -25,27 +25,27 @@ TEST(ParserUnitest, ParsingADD)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingDEL_default)
@@ -56,7 +56,7 @@ TEST(ParserUnitest, ParsingDEL_default)
 
 	parseInfo_Answer.command = Command::DEL;
 	parseInfo_Answer.searchType = SelectType::EMPLOYEE_NUMBER;
-	parseInfo_Answer.employee.employeeNumber = 18115040;
+	parseInfo_Answer.employee.employeeNumber_ = 18115040;
 
 	string commandLine = "DEL, , , ,employeeNum,18115040";
 
@@ -67,27 +67,27 @@ TEST(ParserUnitest, ParsingDEL_default)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingDEL_optional)
@@ -99,7 +99,7 @@ TEST(ParserUnitest, ParsingDEL_optional)
 	parseInfo_Answer.command = Command::DEL;
 	parseInfo_Answer.isDetailPrint = true;
 	parseInfo_Answer.searchType = SelectType::LAST_NAME;
-	parseInfo_Answer.employee.name.last = "MPOSXU";
+	parseInfo_Answer.employee.name_.last = "MPOSXU";
 
 	string commandLine = "DEL,-p,-l, ,name,MPOSXU";
 
@@ -110,27 +110,27 @@ TEST(ParserUnitest, ParsingDEL_optional)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingSCH_default)
@@ -141,7 +141,7 @@ TEST(ParserUnitest, ParsingSCH_default)
 
 	parseInfo_Answer.command = Command::SCH;
 	parseInfo_Answer.searchType = SelectType::CERTI_LEVEL;
-	parseInfo_Answer.employee.certiLevel = CertiLevel::ADV;
+	parseInfo_Answer.employee.certiLevel_ = CertiLevel::ADV;
 
 	string commandLine = "SCH, , , ,certi,ADV";
 
@@ -152,27 +152,27 @@ TEST(ParserUnitest, ParsingSCH_default)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingSCH_optional)
@@ -183,7 +183,7 @@ TEST(ParserUnitest, ParsingSCH_optional)
 
 	parseInfo_Answer.command = Command::SCH;
 	parseInfo_Answer.searchType = SelectType::MONTH_OF_BIRTHDAY;
-	parseInfo_Answer.employee.birthday.month = 9;
+	parseInfo_Answer.employee.birthday_.month_ = 9;
 
 	string commandLine = "SCH, ,-m, ,birthday,09";
 
@@ -194,27 +194,27 @@ TEST(ParserUnitest, ParsingSCH_optional)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingMOD_default)
@@ -225,9 +225,9 @@ TEST(ParserUnitest, ParsingMOD_default)
 
 	parseInfo_Answer.command = Command::MOD;
 	parseInfo_Answer.searchType = SelectType::EMPLOYEE_NUMBER;
-	parseInfo_Answer.employee.employeeNumber = 8123556;
-	parseInfo_Answer.modifyType = SelectType::BIRTHDAY;
-	parseInfo_Answer.modifyEmployee.birthday = { 2011,7, 6 };
+	parseInfo_Answer.employee.employeeNumber_ = 8123556;
+	parseInfo_Answer.modifyType = SelectType::FULL_BIRTHDAY;
+	parseInfo_Answer.modifyEmployee.birthday_ = { 2011,7, 6 };
 
 	string commandLine = "MOD, , , ,employeeNum,08123556,birthday,20110706";
 
@@ -238,27 +238,27 @@ TEST(ParserUnitest, ParsingMOD_default)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }
 
 TEST(ParserUnitest, ParsingMOD_optional)
@@ -269,9 +269,9 @@ TEST(ParserUnitest, ParsingMOD_optional)
 
 	parseInfo_Answer.command = Command::MOD;
 	parseInfo_Answer.searchType = SelectType::LAST_NAME;
-	parseInfo_Answer.employee.name.last = "KIM";
-	parseInfo_Answer.modifyType = SelectType::PHONE_NUMBER;
-	parseInfo_Answer.modifyEmployee.phoneNumber = { 9777, 5455 };
+	parseInfo_Answer.employee.name_.last = "KIM";
+	parseInfo_Answer.modifyType = SelectType::FULL_PHONE_NUMBER;
+	parseInfo_Answer.modifyEmployee.phoneNumber_ = { 9777, 5455 };
 
 	string commandLine = "MOD, ,-l, ,name,KIM,phoneNum,010-9777-5455";
 
@@ -282,25 +282,25 @@ TEST(ParserUnitest, ParsingMOD_optional)
 	EXPECT_EQ(parseInfo_Answer.searchType, parseInfo.searchType);
 	EXPECT_EQ(parseInfo_Answer.modifyType, parseInfo.modifyType);
 
-	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber, parseInfo.employee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.employee.name.first, parseInfo.employee.name.first);
-	EXPECT_EQ(parseInfo_Answer.employee.name.last, parseInfo.employee.name.last);
-	EXPECT_EQ(parseInfo_Answer.employee.careerLevel, parseInfo.employee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.mid, parseInfo.employee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber.last, parseInfo.employee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.year, parseInfo.employee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.month, parseInfo.employee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.employee.birthday.day, parseInfo.employee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.employee.certiLevel, parseInfo.employee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.employee.employeeNumber_, parseInfo.employee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.first, parseInfo.employee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.employee.name_.last, parseInfo.employee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.careerLevel_, parseInfo.employee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.mid, parseInfo.employee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.employee.phoneNumber_.last, parseInfo.employee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.year_, parseInfo.employee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.month_, parseInfo.employee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.employee.birthday_.day_, parseInfo.employee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.employee.certiLevel_, parseInfo.employee.certiLevel_);
 
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber, parseInfo.modifyEmployee.employeeNumber);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.first, parseInfo.modifyEmployee.name.first);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name.last, parseInfo.modifyEmployee.name.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel, parseInfo.modifyEmployee.careerLevel);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.mid, parseInfo.modifyEmployee.phoneNumber.mid);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber.last, parseInfo.modifyEmployee.phoneNumber.last);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.year, parseInfo.modifyEmployee.birthday.year);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.month, parseInfo.modifyEmployee.birthday.month);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday.day, parseInfo.modifyEmployee.birthday.day);
-	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel, parseInfo.modifyEmployee.certiLevel);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.employeeNumber_, parseInfo.modifyEmployee.employeeNumber_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.first, parseInfo.modifyEmployee.name_.first);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.name_.last, parseInfo.modifyEmployee.name_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.careerLevel_, parseInfo.modifyEmployee.careerLevel_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.mid, parseInfo.modifyEmployee.phoneNumber_.mid);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.phoneNumber_.last, parseInfo.modifyEmployee.phoneNumber_.last);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.year_, parseInfo.modifyEmployee.birthday_.year_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.month_, parseInfo.modifyEmployee.birthday_.month_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.birthday_.day_, parseInfo.modifyEmployee.birthday_.day_);
+	EXPECT_EQ(parseInfo_Answer.modifyEmployee.certiLevel_, parseInfo.modifyEmployee.certiLevel_);
 }

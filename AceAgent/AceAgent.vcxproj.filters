@@ -16,9 +16,6 @@
     <ClCompile Include="SearchManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="EmployeeInformation.h">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CommandParser.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="EmployeeInfomation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="IDataManager.h">
@@ -55,6 +49,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="SelectType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeInformation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

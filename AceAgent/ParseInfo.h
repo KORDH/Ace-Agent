@@ -1,5 +1,15 @@
 #pragma once
 #include "EmployeeInformation.h"
+#include "SelectType.h"
+
+enum class Command
+{
+    INVALID,
+    ADD,
+    DEL,
+    SCH,
+    MOD,
+};
 
 class ParseInfo
 {
@@ -8,12 +18,8 @@ public:
     {
         command = Command::INVALID;
         isDetailPrint = false;
-        searchType = SelectType::INVALID;
-        modifyType = SelectType::INVALID;
-        employee = { 0, {"               ", "               "},
-                   CareerLevel::INVALID, {0, 0}, {0, 0, 0}, CertiLevel::INVALID };
-        modifyEmployee = { 0, {"               ", "               "},
-                         CareerLevel::INVALID, {0, 0}, {0, 0, 0}, CertiLevel::INVALID };
+        searchType = SelectType::NONE;
+        modifyType = SelectType::NONE;
     };
 
 public:
@@ -21,6 +27,6 @@ public:
     bool isDetailPrint;
     SelectType searchType;
     SelectType modifyType;
-    EmployeeInformation employee;
-    EmployeeInformation modifyEmployee;
+    EmployeeInformation employee{ 0, "               ", "               ", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE };;
+    EmployeeInformation modifyEmployee{ 0, "               ", "               ", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE };;
 };

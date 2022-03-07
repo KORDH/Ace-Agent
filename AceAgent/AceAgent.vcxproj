@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandHandler.cpp" />
-    <ClCompile Include="EmployeeInformation.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SearchManager.cpp" />
     <ClCompile Include="Processor.cpp" />
@@ -152,8 +151,8 @@
     <Text Include="output_answer.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EmployeeInformation.h" />
     <ClInclude Include="SearchManager.h" />
-    <ClInclude Include="EmployeeInfomation.h" />
     <ClInclude Include="IDataManager.h" />
     <ClInclude Include="ProcessResult.h" />
     <ClInclude Include="Processor.h" />

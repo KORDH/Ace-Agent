@@ -16,7 +16,7 @@ class FakeDataManager : public IDataManager {
 public:
 	FakeDataManager() {
 	}
-	virtual void addEmployee(EmployeeInfomation& employeeInfomation)
+	virtual void addEmployee(EmployeeInformation& employeeInfomation)
 	{
 		unsigned int employeeNumber = employeeInfomation.getEmployeeNumber();
 		string fullName = employeeInfomation.getFirstName() +" " + employeeInfomation.getLastName();
@@ -39,7 +39,7 @@ public:
 
 	}
 
-	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation)
+	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)
 	{		
 		unsigned int employeeNumber = deleteInfomation.getEmployeeNumber();
 		string fullName = deleteInfomation.getFirstName() + " " + deleteInfomation.getLastName();
@@ -202,7 +202,7 @@ public:
 	}
 
 protected:
-	map <unsigned int, EmployeeInfomation> fakeDataManager_;
+	map <unsigned int, EmployeeInformation> fakeDataManager_;
 	map <string, vector<unsigned int>> fakeDataManagerFullName_;
 	map <string, vector<unsigned int>> fakeDataManagerFristName_;
 	map <string, vector<unsigned int>> fakeDataManagerLastName_;
@@ -223,12 +223,12 @@ private:
 
 class MockDataManager : public IDataManager {
 public:
-	MOCK_METHOD(void, addEmployee, (EmployeeInfomation& employeeInfomation), (override));
-	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation), (override));
+	MOCK_METHOD(void, addEmployee, (EmployeeInformation& employeeInfomation), (override));
+	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation), (override));
 
 	void DelegateToFake() {
-		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInfomation& employeeInfomation) {return fake_.addEmployee(employeeInfomation); });
-		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInfomation& deleteInfomation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInfomation); });
+		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& employeeInformation) {return fake_.addEmployee(employeeInformation); });
+		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
 	}
 
 	size_t getNumOfFakeDataManager()

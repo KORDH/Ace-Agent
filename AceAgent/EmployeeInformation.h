@@ -1,76 +1,116 @@
 #pragma once
 #include <string>
+
 using namespace std;
-
-enum class Command
-{
-    INVALID,
-    ADD,
-    DEL,
-    SCH,
-    MOD,
-};
-
-struct Name
-{
-    string first;
-    string last;
-};
-
-struct Birthday
-{
-    unsigned int year;
-    unsigned int month;
-    unsigned int day;
-};
-
-struct PhoneNumber
-{
-    unsigned int mid;
-    unsigned int last;
-};
 
 enum class CareerLevel
 {
-    INVALID,
-    CL1,
-    CL2,
-    CL3,
-    CL4,
+	CL1,
+	CL2,
+	CL3,
+	CL4,
+	NONE,
 };
 
 enum class CertiLevel
 {
-    INVALID,
-    ADV,
-    PRO,
-    EX,
+	ADV,
+	PRO,
+	EX,
+	NONE
 };
 
-enum class SelectType
+struct Name
 {
-    INVALID,
-    EMPLOYEE_NUMBER,
-    NAME,
-    FIRST_NAME,
-    LAST_NAME,
-    CAREER_LEVEL,
-    PHONE_NUMBER,
-    MID_PHONE_NUMBER,
-    LAST_PHONE_NUMBER,
-    BIRTHDAY,
-    YEAR_OF_BIRTHDAY,
-    MONTH_OF_BIRTHDAY,
-    DAY_OF_BIRTHDAY,
-    CERTI_LEVEL,
+	string first;
+	string last;
 };
 
-struct EmployeeInformation 
+struct PhoneNumber
 {
-    unsigned int employeeNumber;
-    Name name;
-    CareerLevel careerLevel;
-    PhoneNumber phoneNumber;
-    Birthday birthday;
-    CertiLevel certiLevel;
+	unsigned int mid;
+	unsigned int last;
+};
+
+class Birthday
+{
+public:
+	Birthday() : year_{ 0 }, month_{ 0 }, day_{ 0 } {}
+	Birthday(unsigned int year, unsigned int month, unsigned int day)
+		: year_{ year }, month_{ month }, day_{ day }
+	{}
+
+	unsigned int getYear()
+	{
+		return year_;
+	}
+	unsigned int getMonth()
+	{
+		return month_;
+	}unsigned int getDay()
+	{
+		return day_;
+	}
+
+public:
+	unsigned int year_;
+	unsigned int month_;
+	unsigned int day_;
+};
+
+class EmployeeInformation
+{
+
+public:
+	EmployeeInformation(unsigned int employeeNumber, string firstName, string lastName,
+		CareerLevel careerLevel, unsigned int midPhoneNumber, unsigned int lastPhoneNumber,
+		unsigned int  yearOfBirthday, unsigned int  monthOfBirthday, unsigned int  dayOfBirthday, CertiLevel certiLevel) :
+		employeeNumber_{ employeeNumber },
+		name_{ firstName,lastName },
+		careerLevel_{ careerLevel },
+		phoneNumber_{ midPhoneNumber, lastPhoneNumber },
+		birthday_(yearOfBirthday, monthOfBirthday, dayOfBirthday),
+		certiLevel_{ certiLevel }
+	{
+	}
+
+	unsigned int getEmployeeNumber()
+	{
+		return employeeNumber_;
+	}
+	string getFirstName()
+	{
+		return name_.first;
+	}
+	string getLastName()
+	{
+		return name_.last;
+	}
+	CareerLevel getCareerLevel()
+	{
+		return careerLevel_;
+	}
+	unsigned int getMidPhoneNumber()
+	{
+		return phoneNumber_.mid;
+	}
+	unsigned int getLastPhoneNumber()
+	{
+		return phoneNumber_.last;
+	}
+	Birthday getBirthday()
+	{
+		return birthday_;
+	}
+	CertiLevel getCertiLevel()
+	{
+		return certiLevel_;
+	}
+public:
+	unsigned int employeeNumber_;
+	Name name_;
+	CareerLevel careerLevel_;
+	PhoneNumber phoneNumber_;
+	Birthday birthday_;
+	CertiLevel certiLevel_;
 };
