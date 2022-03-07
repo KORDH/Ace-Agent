@@ -12,7 +12,7 @@ AddCommandProcessor::~AddCommandProcessor()
 }
 
 DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor)
-	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{ nullptr }
+	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{  }
 {
 }
 
@@ -26,18 +26,18 @@ void DeleteCommandProcessor::setDeleteInformation(bool isDetailPrint, SelectType
 	deleteType_ = deleteType;
 }
 
-ProcessResult* DeleteCommandProcessor::getProcessResult()
+ProcessResult DeleteCommandProcessor::getProcessResult()
 {
 	return processResult_;
 }
 
-void DeleteCommandProcessor::setProcessResult(ProcessResult* processResult)
+void DeleteCommandProcessor::setProcessResult(ProcessResult processResult)
 {
 	processResult_ = processResult;
 }
 
 SearchCommandProcessor::SearchCommandProcessor(IDataManager& processor)
-	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }
 {
 }
 
@@ -51,18 +51,18 @@ void SearchCommandProcessor::setSearchInformation(bool isDetailPrint, SelectType
 	searchType_ = searchType;
 }
 
-ProcessResult* SearchCommandProcessor::getProcessResult()
+ProcessResult SearchCommandProcessor::getProcessResult()
 {
 	return processResult_;
 }
 
-void SearchCommandProcessor::setProcessResult(ProcessResult* processResult)
+void SearchCommandProcessor::setProcessResult(ProcessResult processResult)
 {
 	processResult_ = processResult;
 }
 
 ModifyCommandProcessor::ModifyCommandProcessor(IDataManager& processor)
-	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }, modifyInformation_{ nullptr }
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }, modifyInformation_{ nullptr }
 {
 }
 
@@ -78,12 +78,12 @@ void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType
 	modifyInformation_ = modifyInformation;
 }
 
-ProcessResult* ModifyCommandProcessor::getProcessResult()
+ProcessResult ModifyCommandProcessor::getProcessResult()
 {
 	return processResult_;
 }
 
-void ModifyCommandProcessor::setProcessResult(ProcessResult* processResult)
+void ModifyCommandProcessor::setProcessResult(ProcessResult processResult)
 {
 	processResult_ = processResult;
 }

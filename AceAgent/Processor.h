@@ -36,8 +36,8 @@ public:
 	}
 
 	void setDeleteInformation(bool isDetailPrint, SelectType deleteType);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -45,7 +45,7 @@ protected:
 private:
 	bool isDetailPrint_ = false;
 	SelectType deleteType_ = SelectType::NONE;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
 };
 
 class SearchCommandProcessor : public CommandProcessor {
@@ -58,8 +58,8 @@ public:
 	}
 
 	void setSearchInformation(bool isDetailPrint, SelectType searchType);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -67,7 +67,7 @@ protected:
 private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
 };
 
 
@@ -81,8 +81,8 @@ public:
 	}
 
 	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation* modifyInformation);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -92,5 +92,5 @@ private:
 	SelectType searchType_ = SelectType::NONE;
 	SelectType modifyType_ = SelectType::NONE;
 	EmployeeInformation* modifyInformation_;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
 };
