@@ -150,7 +150,13 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="input3.txt" />
+    <Text Include="input4.txt" />
+    <Text Include="input2.txt" />
     <Text Include="output_answer.txt" />
+    <Text Include="output_answer3.txt" />
+    <Text Include="output_answer4.txt" />
+    <Text Include="output_answer2.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="datamanager.h" />
