@@ -39,7 +39,7 @@ public:
 	}
 
 	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)
-	{		
+	{
 		unsigned int employeeNumber = deleteInfomation.getEmployeeNumber();
 		string fullName = deleteInfomation.getFirstName() + " " + deleteInfomation.getLastName();
 		unsigned int fullPhone = (deleteInfomation.getMidPhoneNumber() * 10000) + deleteInfomation.getLastPhoneNumber();
@@ -123,7 +123,6 @@ public:
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerDayOfBirthday_[info.getBirthday().getDay()]);
 		eraseVectorByEmplyeeNumber(emplyeeNumber, &fakeDataManagerCertiLevel_[info.getCertiLevel()]);
 		fakeDataManager_.erase(emplyeeNumber);
-
 	}
 
 	ProcessResult* deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
@@ -354,24 +353,24 @@ public:
 			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, modifyInfomation);
 		else if (SelectType::LAST_NAME == searchType)
 			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, modifyInfomation);
-		//else if (SelectType::CAREER_LEVEL == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInfomation.getCareerLevel());
-		//else if (SelectType::FULL_PHONE_NUMBER == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone);
-		//else if (SelectType::MID_PHONE_NUMBER == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInfomation.getMidPhoneNumber());
-		//else if (SelectType::LAST_PHONE_NUMBER == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInfomation.getLastPhoneNumber());
-		//else if (SelectType::FULL_BIRTHDAY == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday);
-		//else if (SelectType::YEAR_OF_BIRTHDAY == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInfomation.getBirthday().getYear());
-		//else if (SelectType::MONTH_OF_BIRTHDAY == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInfomation.getBirthday().getMonth());
-		//else if (SelectType::DAY_OF_BIRTHDAY == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInfomation.getBirthday().getDay());
-		//else if (SelectType::CERTI_LEVEL == searchType)
-		//	return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInfomation.getCertiLevel());
+		else if (SelectType::CAREER_LEVEL == searchType)
+			return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel(), modifyType, modifyInfomation);
+		else if (SelectType::FULL_PHONE_NUMBER == searchType)
+			return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone, modifyType, modifyInfomation);
+		else if (SelectType::MID_PHONE_NUMBER == searchType)
+			return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber(), modifyType, modifyInfomation);
+		else if (SelectType::LAST_PHONE_NUMBER == searchType)
+			return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber(), modifyType, modifyInfomation);
+		else if (SelectType::FULL_BIRTHDAY == searchType)
+			return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday, modifyType, modifyInfomation);
+		else if (SelectType::YEAR_OF_BIRTHDAY == searchType)
+			return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear(), modifyType, modifyInfomation);
+		else if (SelectType::MONTH_OF_BIRTHDAY == searchType)
+			return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth(), modifyType, modifyInfomation);
+		else if (SelectType::DAY_OF_BIRTHDAY == searchType)
+			return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay(), modifyType, modifyInfomation);
+		else if (SelectType::CERTI_LEVEL == searchType)
+			return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel(), modifyType, modifyInfomation);
 	}
 
 	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInformation* targetInfomation, EmployeeInformation* modifyInfomation)
@@ -396,7 +395,7 @@ public:
 			targetInfomation->setCertiLevel(modifyInfomation->getCertiLevel());
 	}
 
-	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation * modifyInformation)
+	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
@@ -404,14 +403,14 @@ public:
 			processResult_.printRecord[0] = to_string(fakeDataManager_.at(emplyeeNumber).getEmployeeNumber());
 
 		//get
-		EmployeeInformation info =  fakeDataManager_.at(emplyeeNumber);
+		EmployeeInformation info = fakeDataManager_.at(emplyeeNumber);
 
 		//delete
 		deleteEmployeeByEmployeeNumber(emplyeeNumber);
 
 		//modify
 		modifyEmployeeInformation(modifyType, &info, modifyInformation);
-		
+
 		//add
 		addEmployee(info);
 
@@ -449,53 +448,98 @@ public:
 		return &processResult_;
 	}
 
-	//ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modify, EmployeeInformation* modifyInfomation)
-	//{
-	//	processResult_.numOfRecord = dataManagerMap[careerLevel].size();
-	//	vector<unsigned int> v = dataManagerMap[careerLevel];
+	ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	{
+		processResult_.numOfRecord = dataManagerMap[careerLevel].size();
+		vector<unsigned int> v = dataManagerMap[careerLevel];
 
-	//	sort(v.begin(), v.end(), employeeNumberCompare);
+		sort(v.begin(), v.end(), employeeNumberCompare);
 
-	//	int i = 0;
-	//	for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
-	//	{
-	//		processResult_.printRecord[i++] = to_string(*it);
-	//	}
+		int i = 0;
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
+		{
+			processResult_.printRecord[i++] = to_string(*it);
+		}
 
-	//	return &processResult_;
-	//}
+		for (auto it = v.begin(); it != v.end(); ++it)
+		{
+			//get
+			EmployeeInformation info = fakeDataManager_.at(*it);
 
-	//ProcessResult* modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modify, EmployeeInformation* modifyInfomation)
-	//{
-	//	processResult_.numOfRecord = dataManagerMap[searchInt].size();
-	//	vector<unsigned int> v = dataManagerMap[searchInt];
+			//delete
+			deleteAllMapByEmployeeNumber(*it);
 
-	//	sort(v.begin(), v.end(), employeeNumberCompare);
+			//modify
+			modifyEmployeeInformation(modifyType, &info, modifyInformation);
 
-	//	int i = 0;
-	//	for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
-	//	{
-	//		processResult_.printRecord[i++] = to_string(*it);
-	//	}
+			//add
+			addEmployee(info);
+		}
 
-	//	return &processResult_;
-	//}
+		return &processResult_;
+	}
 
-	//ProcessResult* modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modify, EmployeeInformation* modifyInfomation)
-	//{
-	//	processResult_.numOfRecord = dataManagerMap[certiLevel].size();
-	//	vector<unsigned int> v = dataManagerMap[certiLevel];
+	ProcessResult* modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	{
+		processResult_.numOfRecord = dataManagerMap[searchInt].size();
+		vector<unsigned int> v = dataManagerMap[searchInt];
 
-	//	sort(v.begin(), v.end(), employeeNumberCompare);
+		sort(v.begin(), v.end(), employeeNumberCompare);
 
-	//	int i = 0;
-	//	for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
-	//	{
-	//		processResult_.printRecord[i++] = to_string(*it);
-	//	}
+		int i = 0;
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
+		{
+			processResult_.printRecord[i++] = to_string(*it);
+		}
 
-	//	return &processResult_;
-	//}
+		for (auto it = v.begin(); it != v.end(); ++it)
+		{
+			//get
+			EmployeeInformation info = fakeDataManager_.at(*it);
+
+			//delete
+			deleteAllMapByEmployeeNumber(*it);
+
+			//modify
+			modifyEmployeeInformation(modifyType, &info, modifyInformation);
+
+			//add
+			addEmployee(info);
+		}
+
+		return &processResult_;
+	}
+
+	ProcessResult* modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	{
+		processResult_.numOfRecord = dataManagerMap[certiLevel].size();
+		vector<unsigned int> v = dataManagerMap[certiLevel];
+
+		sort(v.begin(), v.end(), employeeNumberCompare);
+
+		int i = 0;
+		for (auto it = v.begin(); i < 5 && it != v.end(); ++it)
+		{
+			processResult_.printRecord[i++] = to_string(*it);
+		}
+
+		for (auto it = v.begin(); it != v.end(); ++it)
+		{
+			//get
+			EmployeeInformation info = fakeDataManager_.at(*it);
+
+			//delete
+			deleteAllMapByEmployeeNumber(*it);
+
+			//modify
+			modifyEmployeeInformation(modifyType, &info, modifyInformation);
+
+			//add
+			addEmployee(info);
+		}
+
+		return &processResult_;
+	}
 
 	ProcessResult* getProcessResult() {
 		return &processResult_;
@@ -506,7 +550,7 @@ public:
 		return fakeDataManager_.size();
 	}
 
-	EmployeeInformation & getEmployeeInformation(unsigned int employeeNumber)
+	EmployeeInformation& getEmployeeInformation(unsigned int employeeNumber)
 	{
 		return fakeDataManager_.at(employeeNumber);
 	}
@@ -542,7 +586,7 @@ public:
 		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& EmployeeInformation) {return fake_.addEmployee(EmployeeInformation); });
 		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInfomation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInfomation); });
 		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInfomation); });
-		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation * modifyInfomation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInfomation, modifyType, modifyInfomation); });
+		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInfomation, const SelectType modifyType, EmployeeInformation* modifyInfomation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInfomation, modifyType, modifyInfomation); });
 	}
 
 	size_t getNumOfFakeDataManager()
