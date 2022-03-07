@@ -5,9 +5,17 @@ vector<string> careerLevelName = { "CL1", "CL2", "CL3", "CL4" };
 vector<string> certiLevelName = { "ADV", "PRO", "EX" };
 
 vector<string>
-RecordMaker::makeRecord(bool isDetailPrint, int searchCnt, Command cmdType, vector<EmployeeInformation> employeeInfoList)
+RecordMaker::makeRecord(bool isDetailPrint, Command cmdType, vector<EmployeeInformation> employeeInfoList)
 {
     vector<string> result;
+
+    if (employeeInfoList.size() == 0)
+    {
+        string record = cmdTypeName[(int)cmdType] + ",NONE";
+        result.push_back(record);
+
+        return result;
+    }
 
     if (isDetailPrint)
     {
@@ -42,7 +50,7 @@ RecordMaker::makeRecord(bool isDetailPrint, int searchCnt, Command cmdType, vect
     }
     else
     {
-        string record = cmdTypeName[(int)cmdType] + "," + to_string(searchCnt);
+        string record = cmdTypeName[(int)cmdType] + "," + to_string(employeeInfoList.size());
         result.push_back(record);
     }
 
