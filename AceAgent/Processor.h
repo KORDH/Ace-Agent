@@ -69,3 +69,28 @@ private:
 	SelectType searchType_ = SelectType::NONE;
 	ProcessResult* processResult_ = nullptr;
 };
+
+
+class ModifyCommandProcessor : public CommandProcessor {
+public:
+	ModifyCommandProcessor(IDataManager& processor);
+	~ModifyCommandProcessor();
+
+	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInfomation, modifyType_, modifyInfomation_));
+	}
+
+	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInfomation* modifyInfomation);
+	ProcessResult* getProcessResult();
+	void setProcessResult(ProcessResult* processResult);
+
+protected:
+	IDataManager& processor_;
+
+private:
+	bool isDetailPrint_ = false;
+	SelectType searchType_ = SelectType::NONE;
+	SelectType modifyType_ = SelectType::NONE;
+	EmployeeInfomation* modifyInfomation_;
+	ProcessResult* processResult_ = nullptr;
+};
