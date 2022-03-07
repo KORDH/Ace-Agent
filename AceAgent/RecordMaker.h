@@ -8,5 +8,5 @@
 class RecordMaker
 {
 public:
-    vector<string> makeRecord(bool isDetailPrint, int searchCnt, Command cmdType, vector<EmployeeInformation> employeeInfoList);
+    vector<string> makeRecord(bool isDetailPrint, Command cmdType, vector<EmployeeInformation> employeeInfoList);
 };
