@@ -8,20 +8,25 @@ using namespace std;
 class Printer
 {
 public: 
-	Printer(string command) : command_{ command }
-	{}
-
-	void printRecord(bool isDetailPrint, ProcessResult& processResult)
+	Printer()
 	{
+	}
+
+	string printRecord(bool isDetailPrint, ProcessResult processResult, string commandStr)
+	{
+		string result = "";
 		if (isDetailPrint)
 		{
-			for (string result : processResult.printRecord)
-				cout << result << endl;
+			for (string record : processResult.printRecord)
+				result += record + "\n";
 		}
 		else
-			cout << processResult.numOfRecord << endl;
+		{
+			result += "commandStr," + processResult.numOfRecord;
+			result += "\n";
+		}
+		return result;
 
 	}
 private:
-	string command_;
 };
