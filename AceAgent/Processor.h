@@ -4,6 +4,7 @@
 #include "ProcessResult.h"
 #include "SelectType.h"
 #include "IDataManager.h"
+#include "Printer.h"
 
 #define interface struct
 
@@ -33,11 +34,12 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInformation));
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setDeleteInformation(bool isDetailPrint, SelectType deleteType);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -45,7 +47,8 @@ protected:
 private:
 	bool isDetailPrint_ = false;
 	SelectType deleteType_ = SelectType::NONE;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
+	Printer* printer_;
 };
 
 class SearchCommandProcessor : public CommandProcessor {
@@ -55,11 +58,12 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInformation));
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setSearchInformation(bool isDetailPrint, SelectType searchType);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -67,7 +71,8 @@ protected:
 private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
+	Printer * printer_;
 };
 
 
@@ -78,11 +83,12 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation* modifyInformation);
-	ProcessResult* getProcessResult();
-	void setProcessResult(ProcessResult* processResult);
+	ProcessResult getProcessResult();
+	void setProcessResult(ProcessResult processResult);
 
 protected:
 	IDataManager& processor_;
@@ -92,5 +98,6 @@ private:
 	SelectType searchType_ = SelectType::NONE;
 	SelectType modifyType_ = SelectType::NONE;
 	EmployeeInformation* modifyInformation_;
-	ProcessResult* processResult_ = nullptr;
+	ProcessResult processResult_;
+	Printer * printer_;
 };

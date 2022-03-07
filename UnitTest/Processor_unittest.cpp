@@ -44,8 +44,8 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByEmployeeNumber) {
 
 	AND("1명이 삭제되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - 1);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->numOfRecord, 1);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().numOfRecord, 1);
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullName) {
@@ -67,11 +67,11 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullName) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 2);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 }
 
 
@@ -94,12 +94,12 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFristName) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 3);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastName) {
@@ -121,13 +121,13 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastName) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 4);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByCareerLevel) {
@@ -149,15 +149,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCareerLevel) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("9명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 9);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "88114052");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "1122329");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "5101762");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "88114052");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "1122329");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "5101762");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "8108827");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullPhoneNumber) {
@@ -179,12 +179,12 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullPhoneNumber) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 2);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByMidPhoneNumber) {
@@ -206,13 +206,13 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMidPhoneNumber) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastPhoneNumber) {
@@ -234,13 +234,13 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastPhoneNumber) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullBirthday) {
@@ -262,15 +262,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullBirthday) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByYearOfBirthday) {
@@ -292,15 +292,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByYearOfBirthday) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByMonthOfBirthday) {
@@ -322,15 +322,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMonthOfBirthday) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByDayOfBirthday) {
@@ -352,15 +352,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByDayOfBirthday) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "3113260");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "3113260");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToDeleteByCertiLevel) {
@@ -382,15 +382,15 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCertiLevel) {
 	deleteCommandProcessor.runCommand(employeeInformation);
 
 	AND("12명이 삭제되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager - result);
 	EXPECT_EQ(result, 12);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "85125741");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "8108827");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "8117441");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "10127115");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "85125741");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "8117441");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "10127115");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByEmployeeNumber) {
@@ -413,8 +413,8 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByEmployeeNumber) {
 
 	AND("1명이 검색되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->numOfRecord, 1);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().numOfRecord, 1);
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByFullName) {
@@ -436,11 +436,11 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullName) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 2);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByFristName) {
@@ -462,12 +462,12 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFristName) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByLastName) {
@@ -489,13 +489,13 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastName) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 4);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByCareerLevel) {
@@ -517,15 +517,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCareerLevel) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("9명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 9);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "88114052");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "1122329");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "5101762");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "88114052");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "1122329");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "5101762");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "8108827");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByFullPhoneNumber) {
@@ -547,12 +547,12 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullPhoneNumber) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 2);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByMidPhoneNumber) {
@@ -574,13 +574,13 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMidPhoneNumber) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByLastPhoneNumber) {
@@ -602,13 +602,13 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastPhoneNumber) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByFullBirthday) {
@@ -630,15 +630,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullBirthday) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByYearOfBirthday) {
@@ -660,15 +660,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByYearOfBirthday) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByMonthOfBirthday) {
@@ -690,15 +690,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMonthOfBirthday) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByDayOfBirthday) {
@@ -720,15 +720,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByDayOfBirthday) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "3113260");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "3113260");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToSearchByCertiLevel) {
@@ -750,15 +750,15 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCertiLevel) {
 	searchCommandProcessor.runCommand(employeeInformation);
 
 	AND("12명이 검색되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 12);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "85125741");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "8108827");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "8117441");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "10127115");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "85125741");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "8117441");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "10127115");
 }
 
 TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
@@ -782,8 +782,8 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 
 	AND("1명이 수정되어야 한다");
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->numOfRecord, 1);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().numOfRecord, 1);
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(2117175).getCertiLevel(), CertiLevel::PRO);
 
@@ -809,11 +809,11 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullName) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 2);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -839,12 +839,12 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFristName) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -871,13 +871,13 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByLastName) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("4명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 4);
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115044");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -905,15 +905,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByCareerLevel) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("9명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 9);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "88114052");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "1122329");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "5101762");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "88114052");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "1122329");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "5101762");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "8108827");
 
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(88114052).getCertiLevel(), CertiLevel::PRO);
@@ -943,12 +943,12 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullPhoneNumber) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("2명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 2);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -974,13 +974,13 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByMidPhoneNumber) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115043");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -1007,13 +1007,13 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByLastPhoneNumber) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("3명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 3);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -1040,15 +1040,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullBirthday) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -1077,15 +1077,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByYearOfBirthday) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("5명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 5);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115042");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115043");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115044");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115043");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115044");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115040).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(18115041).getCertiLevel(), CertiLevel::PRO);
@@ -1114,15 +1114,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByMonthOfBirthday) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(2117175).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(17111236).getCertiLevel(), CertiLevel::PRO);
@@ -1151,15 +1151,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByDayOfBirthday) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("7명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 7);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "3113260");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "17111236");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "18115040");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "18115041");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "18115042");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "3113260");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "17111236");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "18115040");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "18115041");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "18115042");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(3113260).getCertiLevel(), CertiLevel::PRO);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(17111236).getCertiLevel(), CertiLevel::PRO);
@@ -1188,15 +1188,15 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByCertiLevel) {
 	modifyCommandProcessor.runCommand(employeeInformation);
 
 	AND("12명이 수정되어야 한다");
-	unsigned int result = mockProcessor_.getProcessResult()->numOfRecord;
+	unsigned int result = mockProcessor_.getProcessResult().numOfRecord;
 	EXPECT_EQ(mockProcessor_.getNumOfFakeDataManager(), numOfFakeDataManager);
 	EXPECT_EQ(result, 12);
 
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[0], "85125741");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[1], "2117175");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[2], "8108827");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[3], "8117441");
-	EXPECT_EQ(mockProcessor_.getProcessResult()->printRecord[4], "10127115");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[0], "85125741");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[1], "2117175");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[2], "8108827");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[3], "8117441");
+	EXPECT_EQ(mockProcessor_.getProcessResult().printRecord[4], "10127115");
 
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(85125741).getCareerLevel(), CareerLevel::CL4);
 	EXPECT_EQ(mockProcessor_.getEmployeeInformation(2117175).getCareerLevel(), CareerLevel::CL4);
