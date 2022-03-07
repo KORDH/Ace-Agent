@@ -1,10 +1,11 @@
 #pragma once
+#include <vector>
 #include <string>
 using namespace std;
 
 class ProcessResult
 {
 public:
-	string printRecord[5];
+	vector<string> printRecord;
 	unsigned int numOfRecord = 0;
 };
