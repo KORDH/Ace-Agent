@@ -46,5 +46,26 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType deleteType_ = SelectType::NONE;
 	ProcessResult* processResult_ = nullptr;
+};
 
+class SearchCommandProcessor : public CommandProcessor {
+public:
+	SearchCommandProcessor(IDataManager& processor);
+	~SearchCommandProcessor();
+
+	virtual void runCommand(EmployeeInfomation& employeeInfomation) override {
+		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInfomation));
+	}
+
+	void setSearchInformation(bool isDetailPrint, SelectType searchType);
+	ProcessResult* getProcessResult();
+	void setProcessResult(ProcessResult* processResult);
+
+protected:
+	IDataManager& processor_;
+
+private:
+	bool isDetailPrint_ = false;
+	SelectType searchType_ = SelectType::NONE;
+	ProcessResult* processResult_ = nullptr;
 };

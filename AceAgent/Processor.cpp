@@ -11,7 +11,7 @@ AddCommandProcessor::~AddCommandProcessor()
 {
 }
 
-DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor) 
+DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{ nullptr }
 {
 }
@@ -36,6 +36,30 @@ void DeleteCommandProcessor::setProcessResult(ProcessResult* processResult)
 	processResult_ = processResult;
 }
 
+SearchCommandProcessor::SearchCommandProcessor(IDataManager& processor)
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }
+{
+}
+
+SearchCommandProcessor::~SearchCommandProcessor()
+{
+}
+
+void SearchCommandProcessor::setSearchInformation(bool isDetailPrint, SelectType searchType)
+{
+	isDetailPrint_ = isDetailPrint;
+	searchType_ = searchType;
+}
+
+ProcessResult* SearchCommandProcessor::getProcessResult()
+{
+	return processResult_;
+}
+
+void SearchCommandProcessor::setProcessResult(ProcessResult* processResult)
+{
+	processResult_ = processResult;
+}
 
 
 
