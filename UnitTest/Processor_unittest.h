@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include "MockDataManager.h"
-#include "../AceAgent/Processor.cpp"
+#include "../AceAgent/CommandProcessor.h"
 
 class FixtureCommandProcessor : public ::testing::Test {
 protected:

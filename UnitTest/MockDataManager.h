@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include <stdexcept>
-#include "../AceAgent/Processor.h"
+#include "../AceAgent/CommandProcessor.h"
 #include "../AceAgent/SelectType.h"
 #include "../AceAgent/ProcessResult.h"
 #include <map>
@@ -16,7 +16,7 @@ class FakeDataManager : public IDataManager {
 public:
 	FakeDataManager() {
 	}
-	virtual void addEmployee(EmployeeInformation& EmployeeInformation)
+	virtual void addEmployee(EmployeeInformation EmployeeInformation)
 	{
 		unsigned int employeeNumber = EmployeeInformation.getEmployeeNumber();
 		string fullName = EmployeeInformation.getFirstName() + " " + EmployeeInformation.getLastName();
@@ -38,7 +38,7 @@ public:
 		fakeDataManagerCertiLevel_[EmployeeInformation.getCertiLevel()].push_back(employeeNumber);;
 	}
 
-	virtual ProcessResult deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)
+	virtual ProcessResult delEmployee(bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)
 	{
 		unsigned int employeeNumber = deleteInformation.getEmployeeNumber();
 		string fullName = deleteInformation.getFirstName() + " " + deleteInformation.getLastName();
@@ -229,7 +229,7 @@ public:
 		return processResult_;
 	}
 
-	virtual ProcessResult searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)
+	virtual ProcessResult schEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -338,7 +338,7 @@ public:
 		return processResult_;
 	}
 
-	virtual ProcessResult modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	virtual ProcessResult modEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -346,31 +346,31 @@ public:
 		unsigned int fullBrithday = (searchInformation.getBirthday().getYear() * 10000) + (searchInformation.getBirthday().getMonth() * 100) + (searchInformation.getBirthday().getYear() * 1);
 
 		if (SelectType::EMPLOYEE_NUMBER == searchType)
-			return modifyEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber(), modifyType, modifyInformation);
+			return modifyEmployeeByEmployeeNumber(searchInformation.getEmployeeNumber(), modifyType, &modifyInformation);
 		else if (SelectType::FULL_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullName_, fullName, modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerFullName_, fullName, modifyType, &modifyInformation);
 		else if (SelectType::FIRST_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerFristName_, searchInformation.getFirstName(), modifyType, &modifyInformation);
 		else if (SelectType::LAST_NAME == searchType)
-			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerLastName_, searchInformation.getLastName(), modifyType, &modifyInformation);
 		else if (SelectType::CAREER_LEVEL == searchType)
-			return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerCareerLevel_, searchInformation.getCareerLevel(), modifyType, &modifyInformation);
 		else if (SelectType::FULL_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone, modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerFullPhoneNumber_, fullPhone, modifyType, &modifyInformation);
 		else if (SelectType::MID_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerMidPhoneNumber_, searchInformation.getMidPhoneNumber(), modifyType, &modifyInformation);
 		else if (SelectType::LAST_PHONE_NUMBER == searchType)
-			return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerLastPhoneNumber_, searchInformation.getLastPhoneNumber(), modifyType,& modifyInformation);
 		else if (SelectType::FULL_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday, modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerFullBirthDay_, fullBrithday, modifyType, &modifyInformation);
 		else if (SelectType::YEAR_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerYearOfBirthday_, searchInformation.getBirthday().getYear(), modifyType, &modifyInformation);
 		else if (SelectType::MONTH_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerMonthOfBirthday_, searchInformation.getBirthday().getMonth(), modifyType, &modifyInformation);
 		else if (SelectType::DAY_OF_BIRTHDAY == searchType)
-			return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerDayOfBirthday_, searchInformation.getBirthday().getDay(), modifyType, &modifyInformation);
 		else if (SelectType::CERTI_LEVEL == searchType)
-			return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel(), modifyType, modifyInformation);
+			return modifyEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel(), modifyType, &modifyInformation);
 	}
 
 	void modifyEmployeeInformation(const SelectType modifyType, EmployeeInformation* targetInformation, EmployeeInformation* modifyInformation)
@@ -577,16 +577,16 @@ private:
 
 class MockDataManager : public IDataManager {
 public:
-	MOCK_METHOD(void, addEmployee, (EmployeeInformation& EmployeeInformation), (override));
-	MOCK_METHOD(ProcessResult, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation), (override));
-	MOCK_METHOD(ProcessResult, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation), (override));
-	MOCK_METHOD(ProcessResult, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation), (override));
+	MOCK_METHOD(void, addEmployee, (EmployeeInformation EmployeeInformation), (override));
+	MOCK_METHOD(ProcessResult, delEmployee, (bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation), (override));
+	MOCK_METHOD(ProcessResult, schEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation), (override));
+	MOCK_METHOD(ProcessResult, modEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation), (override));
 
 	void DelegateToFake() {
-		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& EmployeeInformation) {return fake_.addEmployee(EmployeeInformation); });
-		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)-> ProcessResult {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
-		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)-> ProcessResult {return fake_.searchEmployee(isDetailPrint, searchType, searchInformation); });
-		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)-> ProcessResult {return fake_.modifyEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
+		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation employeeInformation) {return fake_.addEmployee(employeeInformation); });
+		ON_CALL(*this, delEmployee).WillByDefault([this](bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)-> ProcessResult {return fake_.delEmployee(isDetailPrint, deleteType, deleteInformation); });
+		ON_CALL(*this, schEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)-> ProcessResult {return fake_.schEmployee(isDetailPrint, searchType, searchInformation); });
+		ON_CALL(*this, modEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)-> ProcessResult {return fake_.modEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
 	}
 
 	size_t getNumOfFakeDataManager()
