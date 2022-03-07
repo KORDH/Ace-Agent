@@ -17,13 +17,21 @@ public:
 		string result = "";
 		if (isDetailPrint)
 		{
+			int cnt = 0;
 			for (string record : processResult.printRecord)
+			{
+				if (cnt >= 5)
+					break;
+
 				result += record + "\n";
+				cnt++;
+
+			}
 		}
 		else
 		{
-			result += "commandStr," + processResult.numOfRecord;
-			result += "\n";
+			string numOfRecord = processResult.numOfRecord ? to_string(processResult.numOfRecord) : "NONE";
+			result.append(commandStr).append(",").append(numOfRecord).append("\n");
 		}
 		return result;
 

@@ -44,8 +44,6 @@ CommandHandler::Run(string input, string output)
 
     if (inputFile.fail()) exit(EXIT_FAILURE);
 
-    CommandParser* parser{ new CommandParser() };
-
     string answer = "";
     IDataManager* iDataManager = new Operator();
     Printer* printer = new Printer();
@@ -59,6 +57,7 @@ CommandHandler::Run(string input, string output)
         string commandLine;
         getline(inputFile, commandLine);
 
+        CommandParser* parser{ new CommandParser() };
         ParseInfo parseInfo;
         parser->parseCommandLine(commandLine, parseInfo);
 
