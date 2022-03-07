@@ -11,7 +11,7 @@ AddCommandProcessor::~AddCommandProcessor()
 {
 }
 
-DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor) 
+DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{ nullptr }
 {
 }
@@ -36,6 +36,57 @@ void DeleteCommandProcessor::setProcessResult(ProcessResult* processResult)
 	processResult_ = processResult;
 }
 
+SearchCommandProcessor::SearchCommandProcessor(IDataManager& processor)
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }
+{
+}
+
+SearchCommandProcessor::~SearchCommandProcessor()
+{
+}
+
+void SearchCommandProcessor::setSearchInformation(bool isDetailPrint, SelectType searchType)
+{
+	isDetailPrint_ = isDetailPrint;
+	searchType_ = searchType;
+}
+
+ProcessResult* SearchCommandProcessor::getProcessResult()
+{
+	return processResult_;
+}
+
+void SearchCommandProcessor::setProcessResult(ProcessResult* processResult)
+{
+	processResult_ = processResult;
+}
+
+ModifyCommandProcessor::ModifyCommandProcessor(IDataManager& processor)
+	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{ nullptr }, modifyInformation_{ nullptr }
+{
+}
+
+ModifyCommandProcessor::~ModifyCommandProcessor()
+{
+}
+
+void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInformation* modifyInformation)
+{
+	isDetailPrint_ = isDetailPrint;
+	searchType_ = searchType;
+	modifyType_ = modfiyType;
+	modifyInformation_ = modifyInformation;
+}
+
+ProcessResult* ModifyCommandProcessor::getProcessResult()
+{
+	return processResult_;
+}
+
+void ModifyCommandProcessor::setProcessResult(ProcessResult* processResult)
+{
+	processResult_ = processResult;
+}
 
 
 

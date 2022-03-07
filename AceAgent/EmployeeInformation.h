@@ -51,7 +51,18 @@ public:
 	{
 		return day_;
 	}
-
+	void setYear(unsigned int year)
+	{
+		year_ = year;
+	}
+	void setMonth(unsigned int month)
+	{
+		month_ = month;
+	}
+	void setDay(unsigned int day)
+	{
+		day_ = day;
+	}
 public:
 	unsigned int year_;
 	unsigned int month_;
@@ -106,31 +117,54 @@ public:
 	{
 		return certiLevel_;
 	}
-
+	void setFirstName(string firstName)
+	{
+		name_.first = firstName;
+	}
+	void setLastName(string lastName)
+	{
+		name_.last = lastName;
+	}
 	void setName(Name name)
 	{
 		name_.first = name.first;
 		name_.last = name.last;
 	}
-
 	void setCareerLevel(CareerLevel careerLevel)
 	{
 		careerLevel_ = careerLevel;
 	}
-
+	void setMidPhoneNumber(unsigned int midPhoneNumber)
+	{
+		phoneNumber_.mid = midPhoneNumber;
+	}
+	void setLastPhoneNumber(unsigned int lastPhoneNumber)
+	{
+		phoneNumber_.last = lastPhoneNumber;
+	}
+	void setYearOfBirthday(Birthday birthday)
+	{
+		birthday_.setYear(birthday.getYear());
+	}
+	void setMonthOfBirthday(Birthday birthday)
+	{
+		birthday_.setMonth(birthday.getMonth());
+	}
+	void setDayOfBirthday(Birthday birthday)
+	{
+		birthday_.setDay(birthday.getDay());
+	}
 	void setPhoneNumber(PhoneNumber phoneNumber)
 	{
 		phoneNumber_.mid = phoneNumber.mid;
 		phoneNumber_.last = phoneNumber.last;
 	}
-
 	void setBirthday(Birthday birthday)
 	{
 		birthday_.year_ = birthday.year_;
 		birthday_.month_ = birthday.month_;
 		birthday_.day_ = birthday.day_;
 	}
-
 	void setCertiLevel(CertiLevel certiLevel)
 	{
 		certiLevel_ = certiLevel;
