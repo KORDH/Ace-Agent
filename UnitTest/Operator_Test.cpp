@@ -664,7 +664,7 @@ TEST_F(OperatorTest, schOperatorTestbyCertiLevel) {
     EmployeeInformation* pEmployeeInfo = new EmployeeInformation(17112609, "FB", "NTAWR", CareerLevel::CL4, 5645, 6122, 1986, 12, 03, CertiLevel::PRO);
 
     ProcessResult result = pOperator->schEmployee(true, SelectType::CERTI_LEVEL, *pEmployeeInfo);
-    EXPECT_EQ(result.numOfRecord, 7);
+    EXPECT_EQ(result.numOfRecord, 5);
     for (auto it : result.printRecord)
     {
         cout << it << endl;
