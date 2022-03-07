@@ -106,6 +106,35 @@ public:
 	{
 		return certiLevel_;
 	}
+
+	void setName(Name name)
+	{
+		name_.first = name.first;
+		name_.last = name.last;
+	}
+
+	void setCareerLevel(CareerLevel careerLevel)
+	{
+		careerLevel_ = careerLevel;
+	}
+
+	void setPhoneNumber(PhoneNumber phoneNumber)
+	{
+		phoneNumber_.mid = phoneNumber.mid;
+		phoneNumber_.last = phoneNumber.last;
+	}
+
+	void setBirthday(Birthday birthday)
+	{
+		birthday_.year_ = birthday.year_;
+		birthday_.month_ = birthday.month_;
+		birthday_.day_ = birthday.day_;
+	}
+
+	void setCertiLevel(CertiLevel certiLevel)
+	{
+		certiLevel_ = certiLevel;
+	}
 public:
 	unsigned int employeeNumber_;
 	Name name_;
