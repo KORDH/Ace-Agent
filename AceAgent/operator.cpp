@@ -33,14 +33,14 @@ Operator::addEmployee(EmployeeInformation employeeInfo)
     insertData(employeeInfo);
 }
 
-ProcessResult*
-Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInformation employeeInfo)
+ProcessResult
+Operator::delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
     vector<EmployeeInformation> list;
 
-    if (SelectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
+    if (selectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
@@ -49,31 +49,27 @@ Operator::delEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
 
     result.numOfRecord = list.size();
 
-    if (list.size() == 0)
+    if (list.size() != 0)
     {
-        result.printRecord.clear();
-
-        return &result;
+        for (auto it : list)
+        {
+            deleteData(it);
+        }
     }
 
-    for (auto it : list)
-    {
-        deleteData(it);
-    }
+    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, Command::DEL, list);
 
-    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, list.size(), Command::DEL, list);
-
-    return &result;
+    return result;
 }
 
-ProcessResult*
-Operator::schEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInformation employeeInfo)
+ProcessResult
+Operator::schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
     vector<EmployeeInformation> list;
 
-    if (SelectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
+    if (selectType == SelectType::EMPLOYEE_NUMBER && employeeInfo.employeeNumber_ < EMPLOYEE_NUM_BOUND)
     {
         employeeInfo.employeeNumber_ += EMPLOYEE_NUM_CORRECTION;
     }
@@ -82,20 +78,13 @@ Operator::schEmployee(bool isDetailPrint, SelectType SelectType, EmployeeInforma
 
     result.numOfRecord = list.size();
 
-    if (list.size() == 0)
-    {
-        result.printRecord.clear();
+    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, Command::DEL, list);
 
-        return &result;
-    }
-
-    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, list.size(), Command::DEL, list);
-
-    return &result;
+    return result;
 
 }
 
-ProcessResult*
+ProcessResult
 Operator::modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo)
 {
     Operator* pOperator = new Operator;
@@ -111,19 +100,17 @@ Operator::modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInforma
 
     result.numOfRecord = list.size();
 
-    if (list.size() == 0)
+    if (list.size() != 0)
     {
-        return &result;
+        for (auto it : list)
+        {
+            pOperator->_modData(pDataManager, modOption, it.employeeNumber_, modEmployeeInfo);
+        }
     }
 
-    for (auto it : list)
-    {
-        pOperator->_modData(pDataManager, modOption, it.employeeNumber_, modEmployeeInfo);
-    }
+    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, Command::MOD, list);
 
-    result.printRecord = pRecordMaker->makeRecord(isDetailPrint, list.size(), Command::MOD, list);
-
-    return &result;
+    return result;
 }
 
 void
