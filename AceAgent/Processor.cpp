@@ -14,10 +14,12 @@ AddCommandProcessor::~AddCommandProcessor()
 DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{  }
 {
+	printer_ = new Printer("DEL");
 }
 
 DeleteCommandProcessor::~DeleteCommandProcessor()
 {
+	delete(printer_);
 }
 
 void DeleteCommandProcessor::setDeleteInformation(bool isDetailPrint, SelectType deleteType)
@@ -39,10 +41,12 @@ void DeleteCommandProcessor::setProcessResult(ProcessResult processResult)
 SearchCommandProcessor::SearchCommandProcessor(IDataManager& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }
 {
+	printer_ = new Printer("SCH");
 }
 
 SearchCommandProcessor::~SearchCommandProcessor()
 {
+	delete(printer_);
 }
 
 void SearchCommandProcessor::setSearchInformation(bool isDetailPrint, SelectType searchType)
@@ -64,10 +68,12 @@ void SearchCommandProcessor::setProcessResult(ProcessResult processResult)
 ModifyCommandProcessor::ModifyCommandProcessor(IDataManager& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }, modifyInformation_{ nullptr }
 {
+	printer_ = new Printer("MOD");
 }
 
 ModifyCommandProcessor::~ModifyCommandProcessor()
 {
+	delete(printer_);
 }
 
 void ModifyCommandProcessor::setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modfiyType, EmployeeInformation* modifyInformation)

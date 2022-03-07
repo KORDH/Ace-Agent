@@ -38,7 +38,7 @@ public:
 		fakeDataManagerCertiLevel_[EmployeeInformation.getCertiLevel()].push_back(employeeNumber);;
 	}
 
-	virtual ProcessResult* deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)
+	virtual ProcessResult deleteEmployee(const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)
 	{
 		unsigned int employeeNumber = deleteInformation.getEmployeeNumber();
 		string fullName = deleteInformation.getFirstName() + " " + deleteInformation.getLastName();
@@ -125,7 +125,7 @@ public:
 		fakeDataManager_.erase(emplyeeNumber);
 	}
 
-	ProcessResult* deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
+	ProcessResult deleteEmployeeByEmployeeNumber(unsigned int emplyeeNumber)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
@@ -134,10 +134,10 @@ public:
 
 		deleteAllMapByEmployeeNumber(emplyeeNumber);
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* deleteEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str)
+	ProcessResult deleteEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str)
 	{
 		processResult_.numOfRecord = dataManagerMap[str].size();
 		vector<unsigned int> v = dataManagerMap[str];
@@ -157,10 +157,10 @@ public:
 
 		v.clear();
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* deleteEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel)
+	ProcessResult deleteEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel)
 	{
 		processResult_.numOfRecord = dataManagerMap[careerLevel].size();
 		vector<unsigned int> v = dataManagerMap[careerLevel];
@@ -180,10 +180,10 @@ public:
 
 		v.clear();
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* deleteEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt)
+	ProcessResult deleteEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt)
 	{
 		processResult_.numOfRecord = dataManagerMap[searchInt].size();
 		vector<unsigned int> v = dataManagerMap[searchInt];
@@ -203,10 +203,10 @@ public:
 
 		v.clear();
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* deleteEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel)
+	ProcessResult deleteEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel)
 	{
 		processResult_.numOfRecord = dataManagerMap[certiLevel].size();
 		vector<unsigned int> v = dataManagerMap[certiLevel];
@@ -226,10 +226,10 @@ public:
 
 		v.clear();
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	virtual ProcessResult* searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)
+	virtual ProcessResult searchEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -264,17 +264,17 @@ public:
 			return searchEmployeeMap(fakeDataManagerCertiLevel_, searchInformation.getCertiLevel());
 	}
 
-	ProcessResult* searchEmployeeByEmployeeNumber(int empplyeeNumber)
+	ProcessResult searchEmployeeByEmployeeNumber(int empplyeeNumber)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(empplyeeNumber);
 
 		if (processResult_.numOfRecord)
 			processResult_.printRecord.push_back(to_string(fakeDataManager_.at(empplyeeNumber).getEmployeeNumber()));
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* searchEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str)
+	ProcessResult searchEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str)
 	{
 		processResult_.numOfRecord = dataManagerMap[str].size();
 		vector<unsigned int> v = dataManagerMap[str];
@@ -287,10 +287,10 @@ public:
 			processResult_.printRecord.push_back(to_string(*it));
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* searchEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel)
+	ProcessResult searchEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel)
 	{
 		processResult_.numOfRecord = dataManagerMap[careerLevel].size();
 		vector<unsigned int> v = dataManagerMap[careerLevel];
@@ -303,10 +303,10 @@ public:
 			processResult_.printRecord.push_back(to_string(*it));
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* searchEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt)
+	ProcessResult searchEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt)
 	{
 		processResult_.numOfRecord = dataManagerMap[searchInt].size();
 		vector<unsigned int> v = dataManagerMap[searchInt];
@@ -319,10 +319,10 @@ public:
 			processResult_.printRecord.push_back(to_string(*it));
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* searchEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel)
+	ProcessResult searchEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel)
 	{
 		processResult_.numOfRecord = dataManagerMap[certiLevel].size();
 		vector<unsigned int> v = dataManagerMap[certiLevel];
@@ -335,10 +335,10 @@ public:
 			processResult_.printRecord.push_back(to_string(*it));
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	virtual ProcessResult* modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	virtual ProcessResult modifyEmployee(const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -395,7 +395,7 @@ public:
 			targetInformation->setCertiLevel(modifyInformation->getCertiLevel());
 	}
 
-	ProcessResult* modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	ProcessResult modifyEmployeeByEmployeeNumber(int emplyeeNumber, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = fakeDataManager_.count(emplyeeNumber);
 
@@ -414,10 +414,10 @@ public:
 		//add
 		addEmployee(info);
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	ProcessResult modifyEmployeeMap(map <string, vector<unsigned int>>& dataManagerMap, string str, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = dataManagerMap[str].size();
 		vector<unsigned int> v = dataManagerMap[str];
@@ -445,10 +445,10 @@ public:
 			addEmployee(info);
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	ProcessResult modifyEmployeeMap(map <CareerLevel, vector<unsigned int>>& dataManagerMap, CareerLevel careerLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = dataManagerMap[careerLevel].size();
 		vector<unsigned int> v = dataManagerMap[careerLevel];
@@ -476,10 +476,10 @@ public:
 			addEmployee(info);
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	ProcessResult modifyEmployeeMap(map <unsigned int, vector<unsigned int>>& dataManagerMap, unsigned int searchInt, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = dataManagerMap[searchInt].size();
 		vector<unsigned int> v = dataManagerMap[searchInt];
@@ -507,10 +507,10 @@ public:
 			addEmployee(info);
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
+	ProcessResult modifyEmployeeMap(map <CertiLevel, vector<unsigned int>>& dataManagerMap, CertiLevel certiLevel, const SelectType modifyType, EmployeeInformation* modifyInformation)
 	{
 		processResult_.numOfRecord = dataManagerMap[certiLevel].size();
 		vector<unsigned int> v = dataManagerMap[certiLevel];
@@ -538,11 +538,11 @@ public:
 			addEmployee(info);
 		}
 
-		return &processResult_;
+		return processResult_;
 	}
 
-	ProcessResult* getProcessResult() {
-		return &processResult_;
+	ProcessResult getProcessResult() {
+		return processResult_;
 	}
 
 	size_t getNumOffakeDataManager()
@@ -578,15 +578,15 @@ private:
 class MockDataManager : public IDataManager {
 public:
 	MOCK_METHOD(void, addEmployee, (EmployeeInformation& EmployeeInformation), (override));
-	MOCK_METHOD(ProcessResult*, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation), (override));
-	MOCK_METHOD(ProcessResult*, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation), (override));
-	MOCK_METHOD(ProcessResult*, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation), (override));
+	MOCK_METHOD(ProcessResult, deleteEmployee, (const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation), (override));
+	MOCK_METHOD(ProcessResult, searchEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation), (override));
+	MOCK_METHOD(ProcessResult, modifyEmployee, (const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation), (override));
 
 	void DelegateToFake() {
 		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation& EmployeeInformation) {return fake_.addEmployee(EmployeeInformation); });
-		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)-> ProcessResult* {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
-		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)-> ProcessResult* {return fake_.searchEmployee(isDetailPrint, searchType, searchInformation); });
-		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)-> ProcessResult* {return fake_.modifyEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
+		ON_CALL(*this, deleteEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType deleteType, EmployeeInformation& deleteInformation)-> ProcessResult {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
+		ON_CALL(*this, searchEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation)-> ProcessResult {return fake_.searchEmployee(isDetailPrint, searchType, searchInformation); });
+		ON_CALL(*this, modifyEmployee).WillByDefault([this](const bool isDetailPrint, const SelectType searchType, EmployeeInformation& searchInformation, const SelectType modifyType, EmployeeInformation* modifyInformation)-> ProcessResult {return fake_.modifyEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
 	}
 
 	size_t getNumOfFakeDataManager()
@@ -594,7 +594,7 @@ public:
 		return fake_.getNumOffakeDataManager();
 	}
 
-	ProcessResult* getProcessResult()
+	ProcessResult getProcessResult()
 	{
 		return fake_.getProcessResult();
 	}

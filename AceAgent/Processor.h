@@ -34,7 +34,7 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInformation));
-		printer.printRecord(isDetailPrint_, processResult_);
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setDeleteInformation(bool isDetailPrint, SelectType deleteType);
@@ -48,7 +48,7 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType deleteType_ = SelectType::NONE;
 	ProcessResult processResult_;
-	Printer printer;
+	Printer* printer_;
 };
 
 class SearchCommandProcessor : public CommandProcessor {
@@ -58,7 +58,7 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInformation));
-		printer.printRecord(isDetailPrint_, processResult_);
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setSearchInformation(bool isDetailPrint, SelectType searchType);
@@ -72,7 +72,7 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
 	ProcessResult processResult_;
-	Printer printer;
+	Printer * printer_;
 };
 
 
@@ -83,7 +83,7 @@ public:
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
-		printer.printRecord(isDetailPrint_, processResult_);
+		printer_->printRecord(isDetailPrint_, processResult_);
 	}
 
 	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation* modifyInformation);
@@ -99,5 +99,5 @@ private:
 	SelectType modifyType_ = SelectType::NONE;
 	EmployeeInformation* modifyInformation_;
 	ProcessResult processResult_;
-	Printer printer;
+	Printer * printer_;
 };
