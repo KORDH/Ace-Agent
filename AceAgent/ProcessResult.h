@@ -12,7 +12,9 @@ public:
 	ProcessResult& operator = (const ProcessResult& p)
 	{
 		numOfRecord = p.numOfRecord;
-		printRecord.assign(p.printRecord.begin(), p.printRecord.end());
+		printRecord.clear();
+		for (auto it = p.printRecord.begin(); it != p.printRecord.end(); it++)
+			printRecord.push_back(*it);
 		return *this;
 	}
 };
