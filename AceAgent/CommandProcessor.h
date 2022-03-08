@@ -33,7 +33,7 @@ public:
 	~DeleteCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.delEmployee(isDetailPrint_, deleteType_, employeeInformation));
+		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInformation));
 	}
 
 	void setDeleteInformation(bool isDetailPrint, SelectType deleteType);
@@ -55,7 +55,7 @@ public:
 	~SearchCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.schEmployee(isDetailPrint_, searchType_, employeeInformation));
+		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInformation));
 	}
 
 	void setSearchInformation(bool isDetailPrint, SelectType searchType);
@@ -78,7 +78,7 @@ public:
 	~ModifyCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.modEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
+		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
 	}
 
 	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation modifyInformation);

@@ -38,7 +38,7 @@ public:
 		fakeDataManagerCertiLevel_[EmployeeInformation.getCertiLevel()].push_back(employeeNumber);;
 	}
 
-	virtual ProcessResult delEmployee(bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)
+	virtual ProcessResult deleteEmployee(bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)
 	{
 		unsigned int employeeNumber = deleteInformation.getEmployeeNumber();
 		string fullName = deleteInformation.getFirstName() + " " + deleteInformation.getLastName();
@@ -229,7 +229,7 @@ public:
 		return processResult_;
 	}
 
-	virtual ProcessResult schEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)
+	virtual ProcessResult searchEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -338,7 +338,7 @@ public:
 		return processResult_;
 	}
 
-	virtual ProcessResult modEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)
+	virtual ProcessResult modifyEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)
 	{
 		unsigned int employeeNumber = searchInformation.getEmployeeNumber();
 		string fullName = searchInformation.getFirstName() + " " + searchInformation.getLastName();
@@ -578,15 +578,15 @@ private:
 class MockDataManager : public IDataManager {
 public:
 	MOCK_METHOD(void, addEmployee, (EmployeeInformation EmployeeInformation), (override));
-	MOCK_METHOD(ProcessResult, delEmployee, (bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation), (override));
-	MOCK_METHOD(ProcessResult, schEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation), (override));
-	MOCK_METHOD(ProcessResult, modEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation), (override));
+	MOCK_METHOD(ProcessResult, deleteEmployee, (bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation), (override));
+	MOCK_METHOD(ProcessResult, searchEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation), (override));
+	MOCK_METHOD(ProcessResult, modifyEmployee, (bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation), (override));
 
 	void DelegateToFake() {
 		ON_CALL(*this, addEmployee).WillByDefault([this](EmployeeInformation employeeInformation) {return fake_.addEmployee(employeeInformation); });
-		ON_CALL(*this, delEmployee).WillByDefault([this](bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)-> ProcessResult {return fake_.delEmployee(isDetailPrint, deleteType, deleteInformation); });
-		ON_CALL(*this, schEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)-> ProcessResult {return fake_.schEmployee(isDetailPrint, searchType, searchInformation); });
-		ON_CALL(*this, modEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)-> ProcessResult {return fake_.modEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
+		ON_CALL(*this, deleteEmployee).WillByDefault([this](bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation)-> ProcessResult {return fake_.deleteEmployee(isDetailPrint, deleteType, deleteInformation); });
+		ON_CALL(*this, searchEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation)-> ProcessResult {return fake_.searchEmployee(isDetailPrint, searchType, searchInformation); });
+		ON_CALL(*this, modifyEmployee).WillByDefault([this](bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation, SelectType modifyType, EmployeeInformation modifyInformation)-> ProcessResult {return fake_.modifyEmployee(isDetailPrint, searchType, searchInformation, modifyType, modifyInformation); });
 	}
 
 	size_t getNumOfFakeDataManager()
