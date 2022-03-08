@@ -70,7 +70,7 @@ SCH, , , ,birthday,19900703
 DEL, , , ,birthday,19900703
 MOD, , , ,birthday,19900703,birthday,20050520
 SCH, , , ,certi,EX
-SCH, , , ,certi,EX
+DEL, , , ,certi,EX
 MOD, , , ,certi,EX,birthday,20050520
 SCH,-p, , ,employeeNum,12345678	
 DEL,-p, , ,employeeNum,12345678
@@ -88,5 +88,5 @@ SCH,-p, , ,birthday,19900703
 DEL,-p, , ,birthday,19900703
 MOD,-p, , ,birthday,19900703,birthday,20050520
 SCH,-p, , ,certi,EX
-SCH,-p, , ,certi,EX
+DEL,-p, , ,certi,EX
 MOD,-p, , ,certi,EX,birthday,20050520
