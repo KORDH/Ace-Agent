@@ -34,7 +34,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByEmployeeNumber) {
 
 	WHEN("employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::EMPLOYEE_NUMBER);
@@ -58,7 +58,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullName) {
 
 	WHEN("detailPrint 옵션이 disable되고 employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_NAME);
@@ -85,7 +85,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFristName) {
 
 	WHEN("employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FIRST_NAME);
@@ -112,7 +112,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastName) {
 
 	WHEN("employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_NAME);
@@ -140,7 +140,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCareerLevel) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CAREER_LEVEL);
@@ -170,7 +170,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullPhoneNumber) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_PHONE_NUMBER);
@@ -197,7 +197,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMidPhoneNumber) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MID_PHONE_NUMBER);
@@ -225,7 +225,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByLastPhoneNumber) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::LAST_PHONE_NUMBER);
@@ -253,7 +253,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByFullBirthday) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::FULL_BIRTHDAY);
@@ -283,7 +283,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByYearOfBirthday) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::YEAR_OF_BIRTHDAY);
@@ -313,7 +313,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByMonthOfBirthday) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::MONTH_OF_BIRTHDAY);
@@ -343,7 +343,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByDayOfBirthday) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::DAY_OF_BIRTHDAY);
@@ -373,7 +373,7 @@ TEST_F(FixtureCommandProcessor, SuccessToDeleteByCertiLevel) {
 
 	WHEN(" employee를 delete 했을 때");
 	THEN("delete는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, delEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, deleteEmployee(_, _, _)).Times(1);
 
 	DeleteCommandProcessor deleteCommandProcessor(mockProcessor_);
 	deleteCommandProcessor.setDeleteInformation(false, SelectType::CERTI_LEVEL);
@@ -403,7 +403,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByEmployeeNumber) {
 
 	WHEN("employee를 Search 했을 때");
 	THEN("search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::EMPLOYEE_NUMBER);
@@ -427,7 +427,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullName) {
 
 	WHEN("detailPrint 옵션이 disable되고 employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_NAME);
@@ -453,7 +453,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFristName) {
 
 	WHEN("employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FIRST_NAME);
@@ -480,7 +480,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastName) {
 
 	WHEN("employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_NAME);
@@ -508,7 +508,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCareerLevel) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CAREER_LEVEL);
@@ -538,7 +538,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullPhoneNumber) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_PHONE_NUMBER);
@@ -565,7 +565,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMidPhoneNumber) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MID_PHONE_NUMBER);
@@ -593,7 +593,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByLastPhoneNumber) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::LAST_PHONE_NUMBER);
@@ -621,7 +621,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByFullBirthday) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::FULL_BIRTHDAY);
@@ -651,7 +651,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByYearOfBirthday) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::YEAR_OF_BIRTHDAY);
@@ -681,7 +681,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByMonthOfBirthday) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::MONTH_OF_BIRTHDAY);
@@ -711,7 +711,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByDayOfBirthday) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::DAY_OF_BIRTHDAY);
@@ -741,7 +741,7 @@ TEST_F(FixtureCommandProcessor, SuccessToSearchByCertiLevel) {
 
 	WHEN(" employee를 Search 했을 때");
 	THEN("Search는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, schEmployee(_, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, searchEmployee(_, _, _)).Times(1);
 
 	SearchCommandProcessor searchCommandProcessor(mockProcessor_);
 	searchCommandProcessor.setSearchInformation(false, SelectType::CERTI_LEVEL);
@@ -771,7 +771,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByEmployeeNumber) {
 
 	WHEN("employee를 Modify 했을 때");
 	THEN("modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation employeeInformation(2117175, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::NONE);
@@ -799,7 +799,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullName) {
 
 	WHEN("detailPrint 옵션이 disable되고 employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -829,7 +829,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFristName) {
 
 	WHEN("employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -861,7 +861,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByLastName) {
 
 	WHEN("employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -895,7 +895,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByCareerLevel) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -933,7 +933,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullPhoneNumber) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -964,7 +964,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByMidPhoneNumber) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -997,7 +997,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByLastPhoneNumber) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -1030,7 +1030,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByFullBirthday) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -1067,7 +1067,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByYearOfBirthday) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -1104,7 +1104,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByMonthOfBirthday) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -1141,7 +1141,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByDayOfBirthday) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::NONE, 0, 0, 0, 0, 0, CertiLevel::PRO);
@@ -1178,7 +1178,7 @@ TEST_F(FixtureCommandProcessor, SuccessToModifyByCertiLevel) {
 
 	WHEN(" employee를 Modify 했을 때");
 	THEN("Modify는 1번 로딩해야 하고,");
-	EXPECT_CALL(mockProcessor_, modEmployee(_, _, _, _, _)).Times(1);
+	EXPECT_CALL(mockProcessor_, modifyEmployee(_, _, _, _, _)).Times(1);
 
 	ModifyCommandProcessor modifyCommandProcessor(mockProcessor_);
 	EmployeeInformation modifyInformation(0, "", "", CareerLevel::CL4, 0, 0, 0, 0, 0, CertiLevel::NONE);
