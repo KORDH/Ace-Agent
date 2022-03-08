@@ -49,7 +49,7 @@ TEST(mainUnitest, EmployeeNumberCase)
 
     commandHandler->Run("../AceAgent/input2.txt", outputFile);
 
-    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), true);
 }
 
 TEST(mainUnitest, allNoneCase)
@@ -61,7 +61,7 @@ TEST(mainUnitest, allNoneCase)
 
     commandHandler->Run("../AceAgent/input3.txt", outputFile);
 
-    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), true);
 }
 
 TEST(mainUnitest, largeInputCase)
@@ -73,5 +73,5 @@ TEST(mainUnitest, largeInputCase)
 
     commandHandler->Run("../AceAgent/input4.txt", outputFile);
 
-    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), true);
 }
