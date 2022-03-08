@@ -33,8 +33,7 @@ public:
 	~DeleteCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.deleteEmployee(isDetailPrint_, deleteType_, employeeInformation));
-		printer_->printRecord(isDetailPrint_, processResult_);
+		setProcessResult(processor_.delEmployee(isDetailPrint_, deleteType_, employeeInformation));
 	}
 
 	void setDeleteInformation(bool isDetailPrint, SelectType deleteType);
@@ -48,7 +47,6 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType deleteType_ = SelectType::NONE;
 	ProcessResult processResult_;
-	Printer* printer_;
 };
 
 class SearchCommandProcessor : public CommandProcessor {
@@ -57,8 +55,7 @@ public:
 	~SearchCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.searchEmployee(isDetailPrint_, searchType_, employeeInformation));
-		printer_->printRecord(isDetailPrint_, processResult_);
+		setProcessResult(processor_.schEmployee(isDetailPrint_, searchType_, employeeInformation));
 	}
 
 	void setSearchInformation(bool isDetailPrint, SelectType searchType);
@@ -72,7 +69,6 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
 	ProcessResult processResult_;
-	Printer * printer_;
 };
 
 
@@ -82,11 +78,10 @@ public:
 	~ModifyCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
-		setProcessResult(processor_.modifyEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
-		printer_->printRecord(isDetailPrint_, processResult_);
+		setProcessResult(processor_.modEmployee(isDetailPrint_, searchType_, employeeInformation, modifyType_, modifyInformation_));
 	}
 
-	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation* modifyInformation);
+	void setModifyInformation(bool isDetailPrint, SelectType searchType, SelectType modifyType, EmployeeInformation modifyInformation);
 	ProcessResult getProcessResult();
 	void setProcessResult(ProcessResult processResult);
 
@@ -97,7 +92,6 @@ private:
 	bool isDetailPrint_ = false;
 	SelectType searchType_ = SelectType::NONE;
 	SelectType modifyType_ = SelectType::NONE;
-	EmployeeInformation* modifyInformation_;
+	EmployeeInformation modifyInformation_;
 	ProcessResult processResult_;
-	Printer * printer_;
 };

@@ -73,6 +73,16 @@ class EmployeeInformation
 {
 
 public:
+	EmployeeInformation()
+	{
+		employeeNumber_ = 0;
+		name_ = { "","" };
+		careerLevel_ = CareerLevel::NONE;
+		phoneNumber_ = { 0,0 };
+		birthday_ = { 0,0,0 };
+		certiLevel_ = CertiLevel::NONE;
+	}
+
 	EmployeeInformation(unsigned int employeeNumber, string firstName, string lastName,
 		CareerLevel careerLevel, unsigned int midPhoneNumber, unsigned int lastPhoneNumber,
 		unsigned int  yearOfBirthday, unsigned int  monthOfBirthday, unsigned int  dayOfBirthday, CertiLevel certiLevel) :

@@ -10,7 +10,7 @@
     <ClCompile Include="ParseInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Processor.cpp">
+    <ClCompile Include="CommandProcessor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SearchManager.cpp">
@@ -45,7 +45,7 @@
     <ClInclude Include="ParseInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Processor.h">
+    <ClInclude Include="CommandProcessor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ProcessResult.h">
@@ -69,6 +69,9 @@
     <ClInclude Include="RecordMaker.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Printer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -80,6 +83,7 @@
     <Text Include="input.txt">
       <Filter>리소스 파일</Filter>
     </Text>
+    <Text Include="output.txt">
     <Text Include="input3.txt">
       <Filter>리소스 파일</Filter>
     </Text>
