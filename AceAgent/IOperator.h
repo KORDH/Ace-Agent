@@ -1,8 +1,8 @@
 #pragma once
 
-class IDataManager {
+class IOperator {
 public:
-	virtual ~IDataManager() {};
+	virtual ~IOperator() {};
 	virtual void addEmployee(EmployeeInformation employeeInfomation) = 0;
 	virtual ProcessResult deleteEmployee(bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation) = 0;
 	virtual ProcessResult searchEmployee(bool isDetailPrint, SelectType searchType, EmployeeInformation searchInformation) = 0;

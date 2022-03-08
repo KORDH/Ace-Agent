@@ -2,7 +2,7 @@
 #include "SelectType.h"
 #include <stdexcept>
 
-AddCommandProcessor::AddCommandProcessor(IDataManager& processor) : processor_{ processor }
+AddCommandProcessor::AddCommandProcessor(IOperator& processor) : processor_{ processor }
 {
 	;
 }
@@ -11,7 +11,7 @@ AddCommandProcessor::~AddCommandProcessor()
 {
 }
 
-DeleteCommandProcessor::DeleteCommandProcessor(IDataManager& processor)
+DeleteCommandProcessor::DeleteCommandProcessor(IOperator& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, deleteType_{ SelectType::NONE }, processResult_{  }
 {
 }
@@ -36,7 +36,7 @@ void DeleteCommandProcessor::setProcessResult(ProcessResult processResult)
 	processResult_ = processResult;
 }
 
-SearchCommandProcessor::SearchCommandProcessor(IDataManager& processor)
+SearchCommandProcessor::SearchCommandProcessor(IOperator& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }
 {
 }
@@ -61,7 +61,7 @@ void SearchCommandProcessor::setProcessResult(ProcessResult processResult)
 	processResult_ = processResult;
 }
 
-ModifyCommandProcessor::ModifyCommandProcessor(IDataManager& processor)
+ModifyCommandProcessor::ModifyCommandProcessor(IOperator& processor)
 	: processor_{ processor }, isDetailPrint_{ false }, searchType_{ SelectType::NONE }, processResult_{  }, modifyInformation_{ }
 {
 }

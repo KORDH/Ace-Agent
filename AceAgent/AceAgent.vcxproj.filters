@@ -19,7 +19,7 @@
     <ClInclude Include="Printer.h" />
     <ClInclude Include="RecordMaker.h" />
     <ClInclude Include="SearchManager.h" />
-    <ClInclude Include="IDataManager.h" />
+    <ClInclude Include="IOperator.h" />
     <ClInclude Include="ProcessResult.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="SelectType.h" />

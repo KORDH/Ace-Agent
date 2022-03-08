@@ -3,7 +3,7 @@
 #include "EmployeeInformation.h"
 #include "ProcessResult.h"
 #include "SelectType.h"
-#include "IDataManager.h"
+#include "IOperator.h"
 #include "Printer.h"
 
 #define interface struct
@@ -15,21 +15,21 @@ public:
 
 class AddCommandProcessor : public CommandProcessor {
 public:
-	AddCommandProcessor(IDataManager& processor);
+	AddCommandProcessor(IOperator& processor);
 	~AddCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
 		processor_.addEmployee(employeeInformation);
 	}
 protected:
-	IDataManager& processor_;
+	IOperator& processor_;
 private:
 
 };
 
 class DeleteCommandProcessor : public CommandProcessor {
 public:
-	DeleteCommandProcessor(IDataManager& processor);
+	DeleteCommandProcessor(IOperator& processor);
 	~DeleteCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
@@ -41,7 +41,7 @@ public:
 	void setProcessResult(ProcessResult processResult);
 
 protected:
-	IDataManager& processor_;
+	IOperator& processor_;
 
 private:
 	bool isDetailPrint_ = false;
@@ -51,7 +51,7 @@ private:
 
 class SearchCommandProcessor : public CommandProcessor {
 public:
-	SearchCommandProcessor(IDataManager& processor);
+	SearchCommandProcessor(IOperator& processor);
 	~SearchCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
@@ -63,7 +63,7 @@ public:
 	void setProcessResult(ProcessResult processResult);
 
 protected:
-	IDataManager& processor_;
+	IOperator& processor_;
 
 private:
 	bool isDetailPrint_ = false;
@@ -74,7 +74,7 @@ private:
 
 class ModifyCommandProcessor : public CommandProcessor {
 public:
-	ModifyCommandProcessor(IDataManager& processor);
+	ModifyCommandProcessor(IOperator& processor);
 	~ModifyCommandProcessor();
 
 	virtual void runCommand(EmployeeInformation& employeeInformation) override {
@@ -86,7 +86,7 @@ public:
 	void setProcessResult(ProcessResult processResult);
 
 protected:
-	IDataManager& processor_;
+	IOperator& processor_;
 
 private:
 	bool isDetailPrint_ = false;

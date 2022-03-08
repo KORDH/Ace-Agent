@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class FakeDataManager : public IDataManager {
+class FakeDataManager : public IOperator {
 public:
 	FakeDataManager() {
 	}
@@ -575,7 +575,7 @@ private:
 };
 
 
-class MockDataManager : public IDataManager {
+class MockDataManager : public IOperator {
 public:
 	MOCK_METHOD(void, addEmployee, (EmployeeInformation EmployeeInformation), (override));
 	MOCK_METHOD(ProcessResult, deleteEmployee, (bool isDetailPrint, SelectType deleteType, EmployeeInformation deleteInformation), (override));

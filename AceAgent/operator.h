@@ -7,9 +7,9 @@
 #include "RecordMaker.h"
 #include "SearchManager.h"
 #include "EmployeeInformation.h"
-#include "IDataManager.h"
+#include "IOperator.h"
 
-class Operator : public IDataManager
+class Operator : public IOperator
 {
 public:
     Operator()
