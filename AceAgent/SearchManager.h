@@ -13,164 +13,55 @@ using namespace std;
 class SearchManager {
 public:
 	vector<EmployeeInformation> SearchEmployeeData(DataManager* pDataManager, SelectType searchType, EmployeeInformation employeeInformation);
+	vector<EmployeeInformation> SearchEmployeeInformation(map<unsigned int, EmployeeInformation>& DataMap, SelectType searchType, EmployeeInformation employeeInformation);
 
-	vector<EmployeeInformation> SearchEmployeeNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
+private:
+	bool isSameData(SelectType searchType, EmployeeInformation EmployeeDataInDB, EmployeeInformation EmployeeDataForSearch) {
+		switch (searchType) {
+		case SelectType::EMPLOYEE_NUMBER:
+			return EmployeeDataInDB.employeeNumber_ == EmployeeDataForSearch.employeeNumber_;
 
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.employeeNumber_ == employeeInformation.employeeNumber_) {
-				result.push_back(iter->second);
-			}
+		case SelectType::FULL_NAME:
+			return (EmployeeDataInDB.name_.first == EmployeeDataForSearch.name_.first && EmployeeDataInDB.name_.last == EmployeeDataForSearch.name_.last);
+
+		case SelectType::FIRST_NAME:
+			return EmployeeDataInDB.name_.first == EmployeeDataForSearch.name_.first;
+
+		case SelectType::LAST_NAME:
+			return EmployeeDataInDB.name_.last == EmployeeDataForSearch.name_.last;
+
+		case SelectType::FULL_BIRTHDAY:
+			return (EmployeeDataInDB.birthday_.year_ == EmployeeDataForSearch.birthday_.year_
+				&& EmployeeDataInDB.birthday_.month_ == EmployeeDataForSearch.birthday_.month_
+				&& EmployeeDataInDB.birthday_.day_ == EmployeeDataForSearch.birthday_.day_);
+
+		case SelectType::YEAR_OF_BIRTHDAY:
+			return EmployeeDataInDB.birthday_.year_ == EmployeeDataForSearch.birthday_.year_;
+
+		case SelectType::MONTH_OF_BIRTHDAY:
+			return EmployeeDataInDB.birthday_.month_ == EmployeeDataForSearch.birthday_.month_;
+
+		case SelectType::DAY_OF_BIRTHDAY:
+			return EmployeeDataInDB.birthday_.day_ == EmployeeDataForSearch.birthday_.day_;
+
+		case SelectType::FULL_PHONE_NUMBER:
+			return (EmployeeDataInDB.phoneNumber_.last == EmployeeDataForSearch.phoneNumber_.last
+				&& EmployeeDataInDB.phoneNumber_.mid == EmployeeDataForSearch.phoneNumber_.mid);
+
+		case SelectType::MID_PHONE_NUMBER:
+			return (EmployeeDataInDB.phoneNumber_.mid == EmployeeDataForSearch.phoneNumber_.mid);
+
+		case SelectType::LAST_PHONE_NUMBER:
+			return (EmployeeDataInDB.phoneNumber_.last == EmployeeDataForSearch.phoneNumber_.last);
+
+		case SelectType::CAREER_LEVEL:
+			return (EmployeeDataInDB.careerLevel_ == EmployeeDataForSearch.careerLevel_);
+
+		case SelectType::CERTI_LEVEL:
+			return (EmployeeDataInDB.certiLevel_ == EmployeeDataForSearch.certiLevel_);
+
+		default:
+			return 0;
 		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.name_.first == employeeInformation.name_.first && iter->second.name_.last == employeeInformation.name_.last) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeFirstName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.name_.first == employeeInformation.name_.first) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeLastName(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.name_.last == employeeInformation.name_.last) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.birthday_.year_ == employeeInformation.birthday_.year_
-				&& iter->second.birthday_.month_ == employeeInformation.birthday_.month_
-				&& iter->second.birthday_.day_ == employeeInformation.birthday_.day_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeYearOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.birthday_.year_ == employeeInformation.birthday_.year_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeMonthOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.birthday_.month_ == employeeInformation.birthday_.month_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeDayOfBirthday(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.birthday_.day_ == employeeInformation.birthday_.day_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeePhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.phoneNumber_.last == employeeInformation.phoneNumber_.last
-				&& iter->second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeMidPhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.phoneNumber_.mid == employeeInformation.phoneNumber_.mid) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeLastPhoneNumber(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.phoneNumber_.last == employeeInformation.phoneNumber_.last) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-
-	vector<EmployeeInformation> SearchEmployeeCareerLevel(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.careerLevel_ == employeeInformation.careerLevel_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
-	}
-
-	vector<EmployeeInformation> SearchEmployeeCertiLevel(map<unsigned int, EmployeeInformation>& DataMap, EmployeeInformation employeeInformation) {
-		vector <EmployeeInformation> result;
-
-		for (auto iter = DataMap.begin(); iter != DataMap.end(); iter++)
-		{
-			if (iter->second.certiLevel_ == employeeInformation.certiLevel_) {
-				result.push_back(iter->second);
-			}
-		}
-		return result;
 	}
 };

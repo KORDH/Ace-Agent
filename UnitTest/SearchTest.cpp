@@ -37,7 +37,7 @@ TEST(SearchTest, SearchTestForEmployeeNumber) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeNumber(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::EMPLOYEE_NUMBER, searchEmployeeInfo);
 
 	EXPECT_EQ(1, result.size());
 
@@ -73,7 +73,7 @@ TEST(SearchTest, SearchTestForFullName) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeName(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::FULL_NAME, searchEmployeeInfo);
 
 	EXPECT_EQ(4, result.size());
 
@@ -110,7 +110,7 @@ TEST(SearchTest, SearchTestForFirstName) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeFirstName(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::FIRST_NAME, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -146,7 +146,7 @@ TEST(SearchTest, SearchTestForLastName) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeLastName(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::LAST_NAME, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -182,7 +182,7 @@ TEST(SearchTest, SearchTestForBirthday) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeBirthday(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::FULL_BIRTHDAY, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -218,7 +218,7 @@ TEST(SearchTest, SearchTestForYearOfBirthday) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeYearOfBirthday(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::YEAR_OF_BIRTHDAY, searchEmployeeInfo);
 
 	EXPECT_EQ(3, result.size());
 
@@ -254,7 +254,7 @@ TEST(SearchTest, SearchTestForMonthOfBirthday) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeMonthOfBirthday(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::MONTH_OF_BIRTHDAY, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -290,7 +290,7 @@ TEST(SearchTest, SearchTestForDayOfBirthday) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeDayOfBirthday(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::DAY_OF_BIRTHDAY, searchEmployeeInfo);
 
 	EXPECT_EQ(3, result.size());
 
@@ -326,7 +326,7 @@ TEST(SearchTest, SearchTestForPhoneNumber) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeePhoneNumber(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::FULL_PHONE_NUMBER, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -362,7 +362,7 @@ TEST(SearchTest, SearchTestForMidPhoneNumber) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeMidPhoneNumber(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::MID_PHONE_NUMBER, searchEmployeeInfo);
 
 	EXPECT_EQ(3, result.size());
 
@@ -398,7 +398,7 @@ TEST(SearchTest, SearchTestForLastPhoneNumber) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeLastPhoneNumber(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::LAST_PHONE_NUMBER, searchEmployeeInfo);
 
 	EXPECT_EQ(4, result.size());
 
@@ -434,7 +434,7 @@ TEST(SearchTest, SearchTestForCareerLevel) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeCareerLevel(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::CAREER_LEVEL, searchEmployeeInfo);
 
 	EXPECT_EQ(2, result.size());
 
@@ -470,7 +470,7 @@ TEST(SearchTest, SearchTestForCertiLevel) {
 
 	WHEN("검색을 했을 때");
 
-	result = searchManager.SearchEmployeeCertiLevel(TestDataMap, searchEmployeeInfo);
+	result = searchManager.SearchEmployeeInformation(TestDataMap, SelectType::CERTI_LEVEL, searchEmployeeInfo);
 
 	EXPECT_EQ(1, result.size());
 

@@ -35,7 +35,43 @@ TEST(mainUnitest, providedInput)
 	string outputFile = "../AceAgent/output.txt";
 	string outputFile_Answer = "../AceAgent/output_answer.txt";
 
-	commandHandler->Run("../AceAgent/input.txt", "../AceAgent/output.txt");
+	commandHandler->Run("../AceAgent/input.txt", outputFile);
 
 	EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), true);
+}
+
+TEST(mainUnitest, EmployeeNumberCase)
+{
+    auto commandHandler{ new CommandHandler };
+
+    string outputFile = "../AceAgent/output2.txt";
+    string outputFile_Answer = "../AceAgent/output_answer2.txt";
+
+    commandHandler->Run("../AceAgent/input2.txt", outputFile);
+
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
+}
+
+TEST(mainUnitest, allNoneCase)
+{
+    auto commandHandler{ new CommandHandler };
+
+    string outputFile = "../AceAgent/output3.txt";
+    string outputFile_Answer = "../AceAgent/output_answer3.txt";
+
+    commandHandler->Run("../AceAgent/input3.txt", outputFile);
+
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
+}
+
+TEST(mainUnitest, largeInputCase)
+{
+    auto commandHandler{ new CommandHandler };
+
+    string outputFile = "../AceAgent/output4.txt";
+    string outputFile_Answer = "../AceAgent/output_answer4.txt";
+
+    commandHandler->Run("../AceAgent/input4.txt", outputFile);
+
+    EXPECT_EQ(isFileSame(outputFile, outputFile_Answer), false);
 }

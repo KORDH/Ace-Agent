@@ -84,6 +84,22 @@
       <Filter>리소스 파일</Filter>
     </Text>
     <Text Include="output.txt">
+    <Text Include="input3.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="input4.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="output_answer4.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="input2.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="output_answer2.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="output_answer3.txt">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>
