@@ -26,7 +26,9 @@ private:
     Name transName(string fullName);
     Birthday transBirthday(string birthDayString);
     CertiLevel transCertiLevel(string certiString);    
-    
+
+    int CheckEmployeeNumber(int employeeNumber);
+    void CheckName(string fullName);
 private:
     vector<string> tokens;
 

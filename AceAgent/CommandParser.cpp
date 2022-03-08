@@ -42,7 +42,7 @@ CommandParser::setCommand(ParseInfo& parseInfo)
     else if (tokens[COMMAND] == "MOD") command = Command::MOD;
     else if (tokens[COMMAND] == "SCH") command = Command::SCH;
     else if (tokens[COMMAND] == "DEL") command = Command::DEL;
-    else command = Command::INVALID;
+    else throw invalid_argument("invalid Command!!");
 
     parseInfo.command = command;
 }
@@ -53,6 +53,8 @@ CommandParser::setIsDetailPrint(ParseInfo& parseInfo)
     bool isPrint = false;
 
     if (tokens[PRINT_OPTION] == "-p") isPrint = true;
+    else if (tokens[PRINT_OPTION] == " ")  isPrint = false;
+    else  throw invalid_argument("invalid Print Option!!");
 
     parseInfo.isDetailPrint = isPrint;
 }
@@ -77,7 +79,7 @@ CommandParser::setSearchType(ParseInfo& parseInfo)
         else if (tokens[SEARCH_CATEGORY] == "birthday" && tokens[SEARCH_OPTION] == "-d") searchType = SelectType::DAY_OF_BIRTHDAY;
         else if (tokens[SEARCH_CATEGORY] == "birthday") searchType = SelectType::FULL_BIRTHDAY;
         else if (tokens[SEARCH_CATEGORY] == "certi") searchType = SelectType::CERTI_LEVEL;
-        else searchType = SelectType::NONE;
+        else throw invalid_argument("invalid Search Category!!");
     }
 
     parseInfo.searchType = searchType;
@@ -96,7 +98,7 @@ CommandParser::setModifyType(ParseInfo& parseInfo)
         else if (tokens[MODIFY_CATEGORY] == "phoneNum") modifyType = SelectType::FULL_PHONE_NUMBER;
         else if (tokens[MODIFY_CATEGORY] == "birthday") modifyType = SelectType::FULL_BIRTHDAY;
         else if (tokens[MODIFY_CATEGORY] == "certi") modifyType = SelectType::CERTI_LEVEL;
-        else modifyType = SelectType::NONE;
+        else throw invalid_argument("invalid Modify Category!!");
     }
 
     parseInfo.modifyType = modifyType;
@@ -114,7 +116,7 @@ CommandParser::setEmployeeForSearch(ParseInfo& parseInfo)
 {
     switch (parseInfo.searchType)
     {
-        case SelectType::EMPLOYEE_NUMBER:   parseInfo.employee.employeeNumber_ = stoi(tokens[SEARCH_VALUE]); break;
+        case SelectType::EMPLOYEE_NUMBER:   parseInfo.employee.employeeNumber_ = CheckEmployeeNumber(stoi(tokens[SEARCH_VALUE])); break;
         case SelectType::FULL_NAME:         parseInfo.employee.name_ = transName(tokens[SEARCH_VALUE]); break;
         case SelectType::FIRST_NAME:        parseInfo.employee.name_.first = tokens[SEARCH_VALUE]; break;
         case SelectType::LAST_NAME:         parseInfo.employee.name_.last = tokens[SEARCH_VALUE]; break;
@@ -132,10 +134,21 @@ CommandParser::setEmployeeForSearch(ParseInfo& parseInfo)
     return;
 }
 
+int
+CommandParser::CheckEmployeeNumber(int employeeNumber)
+{
+    if (employeeNumber >= 22000000 && employeeNumber <= 68000000)
+    {
+        throw invalid_argument("employeeNumber is invalid!!(Only 69사번 ~ 21사번)");
+    }
+
+    return employeeNumber;
+}
+
 void
 CommandParser::setEmployeeForAdd(ParseInfo& parseInfo)
 {
-    parseInfo.employee.employeeNumber_ = stoi(tokens[EMPLOYEE_NUMBER]);
+    parseInfo.employee.employeeNumber_ = CheckEmployeeNumber(stoi(tokens[EMPLOYEE_NUMBER]));
     parseInfo.employee.name_ = transName(tokens[EMPLOYEE_NAME]);
     parseInfo.employee.careerLevel_ = transCareerLevel(tokens[EMPLOYEE_CAREER_LEVEL]);
     parseInfo.employee.phoneNumber_ = transPhoneNumber(tokens[EMPLOYEE_PHONE_NUMBER]);
@@ -151,6 +164,7 @@ CommandParser::transCertiLevel(string stringCertiLevel)
     if (stringCertiLevel == "ADV") careerLevel = CertiLevel::ADV;
     else if (stringCertiLevel == "PRO") careerLevel = CertiLevel::PRO;
     else if (stringCertiLevel == "EX") careerLevel = CertiLevel::EX;
+    else throw invalid_argument("invalid Certi Level!!");
 
     return careerLevel;
 }
@@ -172,6 +186,8 @@ CommandParser::transName(string fullName)
     string token;
     vector<string> names;
 
+    CheckName(fullName);
+
     while (getline(commandStream, token, ' '))
     {
         names.push_back(token);
@@ -179,6 +195,14 @@ CommandParser::transName(string fullName)
     Name name{ names[0], names[1] };
 
     return name;
+}
+
+void 
+CommandParser::CheckName(string fullName)
+{
+    constexpr unsigned int MAX_FULL_NAME_LENGTH = 16;
+
+    if (fullName.length() > MAX_FULL_NAME_LENGTH) throw overflow_error("name length overflow!!");
 }
 
 PhoneNumber
