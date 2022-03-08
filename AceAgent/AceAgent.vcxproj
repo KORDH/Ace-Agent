@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operator.cpp" />
     <ClCompile Include="RecordMaker.cpp" />
