@@ -24,6 +24,7 @@ CommandHandler::Run(string input, string output)
     {
         string commandLine;
         getline(inputFile, commandLine);
+        if (commandLine.size() < MINIMUN_COMMAND_LINE_SIZE) continue;
 
         CommandParser* parser{ new CommandParser() };
         ParseInfo parseInfo;
