@@ -13,7 +13,6 @@ CommandHandler::Run(string input, string output)
 
     if (inputFile.fail()) exit(EXIT_FAILURE);
 
-    string answer = "";
     IDataManager* iDataManager = new Operator();
     Printer* printer = new Printer();
 	AddCommandProcessor* addCommandProcessor = new AddCommandProcessor(*iDataManager);
@@ -39,25 +38,24 @@ CommandHandler::Run(string input, string output)
         case Command::DEL:
             deleteCommandProcessor->setDeleteInformation(parseInfo.isDetailPrint, parseInfo.searchType);
             deleteCommandProcessor->runCommand(parseInfo.employee);
-            answer+=printer->printRecord(parseInfo.isDetailPrint, deleteCommandProcessor->getProcessResult(), "DEL");
+            outputFile << printer->printRecord(parseInfo.isDetailPrint, deleteCommandProcessor->getProcessResult(), "DEL");
             break;
 
         case Command::SCH:
             searchCommandProcessor->setSearchInformation(parseInfo.isDetailPrint, parseInfo.searchType);
             searchCommandProcessor->runCommand(parseInfo.employee);
-            answer += printer->printRecord(parseInfo.isDetailPrint, searchCommandProcessor->getProcessResult(), "SCH");
+            outputFile << printer->printRecord(parseInfo.isDetailPrint, searchCommandProcessor->getProcessResult(), "SCH");
             break;
 
         case Command::MOD:
             modifyCommandProcessor->setModifyInformation(parseInfo.isDetailPrint, parseInfo.searchType,parseInfo.modifyType,parseInfo.modifyEmployee);
             modifyCommandProcessor->runCommand(parseInfo.employee);
-            answer += printer->printRecord(parseInfo.isDetailPrint, modifyCommandProcessor->getProcessResult(), "MOD");
+            outputFile << printer->printRecord(parseInfo.isDetailPrint, modifyCommandProcessor->getProcessResult(), "MOD");
             break;
         default:
             break;
         }
     }
-    outputFile << answer;
 
     inputFile.close();
     outputFile.close();
