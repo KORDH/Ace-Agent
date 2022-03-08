@@ -34,10 +34,7 @@ public:
     ProcessResult delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
     ProcessResult schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
     ProcessResult modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo);
-    void _modData(DataManager* pDataManager, SelectType modOption, unsigned int employeeNumber, EmployeeInformation modEmployeeInfo);
-
-    void insertData(EmployeeInformation employeeInfo);
-    void deleteData(EmployeeInformation employeeInfo);
+    void _calibrateEmployeeNumber(EmployeeInformation& employeeInfo);
 
 private:
     DataManager* pDataManager;
