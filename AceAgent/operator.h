@@ -7,9 +7,9 @@
 #include "RecordMaker.h"
 #include "SearchManager.h"
 #include "EmployeeInformation.h"
-#include "IDataManager.h"
+#include "IOperator.h"
 
-class Operator : public IDataManager
+class Operator : public IOperator
 {
 public:
     Operator()
@@ -31,9 +31,9 @@ public:
     RecordMaker* getRecordMaker() { return pRecordMaker; }
 
     void addEmployee(EmployeeInformation employeeInfo);
-    ProcessResult delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
-    ProcessResult schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
-    ProcessResult modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo);
+    ProcessResult deleteEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
+    ProcessResult searchEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo);
+    ProcessResult modifyEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo);
     void _modData(DataManager* pDataManager, SelectType modOption, unsigned int employeeNumber, EmployeeInformation modEmployeeInfo);
 
     void insertData(EmployeeInformation employeeInfo);

@@ -45,12 +45,12 @@ CommandHandler::Run(string input, string output)
     if (inputFile.fail()) exit(EXIT_FAILURE);
 
     string answer = "";
-    IDataManager* iDataManager = new Operator();
+    IOperator* iOperator = new Operator();
     Printer* printer = new Printer();
-	AddCommandProcessor* addCommandProcessor = new AddCommandProcessor(*iDataManager);
-	DeleteCommandProcessor* deleteCommandProcessor = new DeleteCommandProcessor(*iDataManager);
-	SearchCommandProcessor* searchCommandProcessor = new SearchCommandProcessor(*iDataManager);
-	ModifyCommandProcessor* modifyCommandProcessor = new ModifyCommandProcessor(*iDataManager);
+	AddCommandProcessor* addCommandProcessor = new AddCommandProcessor(*iOperator);
+	DeleteCommandProcessor* deleteCommandProcessor = new DeleteCommandProcessor(*iOperator);
+	SearchCommandProcessor* searchCommandProcessor = new SearchCommandProcessor(*iOperator);
+	ModifyCommandProcessor* modifyCommandProcessor = new ModifyCommandProcessor(*iOperator);
 
     while (!inputFile.eof())
     {

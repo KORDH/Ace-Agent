@@ -34,7 +34,7 @@ Operator::addEmployee(EmployeeInformation employeeInfo)
 }
 
 ProcessResult
-Operator::delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
+Operator::deleteEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
@@ -63,7 +63,7 @@ Operator::delEmployee(bool isDetailPrint, SelectType selectType, EmployeeInforma
 }
 
 ProcessResult
-Operator::schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
+Operator::searchEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo)
 {
     string record;
     ProcessResult result;
@@ -85,7 +85,7 @@ Operator::schEmployee(bool isDetailPrint, SelectType selectType, EmployeeInforma
 }
 
 ProcessResult
-Operator::modEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo)
+Operator::modifyEmployee(bool isDetailPrint, SelectType selectType, EmployeeInformation employeeInfo, SelectType modOption, EmployeeInformation modEmployeeInfo)
 {
     Operator* pOperator = new Operator;
     ProcessResult result;
